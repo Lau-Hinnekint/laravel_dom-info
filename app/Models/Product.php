@@ -10,7 +10,12 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function orders(): BelongsToMany
+    /**
+     * Make the (N,N) relation between Order and Product
+     *
+     * @return void
+     */
+    public function orders(): BelongsToMany 
     {
         return $this->belongsToMany(Order::class)
             ->withPivot('total_quantity', 'total_price');

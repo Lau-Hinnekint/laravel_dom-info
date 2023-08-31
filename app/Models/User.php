@@ -43,6 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    /**
+     * Make the (1,N) relation between Order and User
+     *
+     * @return HasMany
+     */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
