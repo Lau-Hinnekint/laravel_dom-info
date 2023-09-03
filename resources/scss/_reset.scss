@@ -1,0 +1,47 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-weight: 300;
+    color: $primary;
+    overflow-x: hidden;
+}
+
+body,
+a,
+ul,
+ol,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    background-color: $black;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}

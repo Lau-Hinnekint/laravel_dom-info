@@ -1,0 +1,166 @@
+.header {
+    background-image: url("../../../public/images/banner-computer-sml1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 48rem;
+
+    &_nav {
+        background-color: $dark-trans;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 15vh;
+        width: 100%;
+        z-index: 1;
+
+        &-logo {
+            cursor: pointer;
+            height: 75%;
+            margin-left: 2rem;
+        }
+
+        &-listContainer {
+            background-color: $dark;
+            position: absolute;
+            top: 15vh;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            z-index: 3;
+        }
+
+        &-list {
+            background: none;
+            margin: 2rem;            
+        }
+
+        &-listLink {
+            font-size: 1rem;
+            background: none;            
+        }
+
+        &-cart {
+            font-size: 3rem;
+            margin-right: 2rem;
+        }
+    }
+
+    &_banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &-nameContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-nameLogo {
+            display: none;
+        }
+
+        &-nameTitle {
+            height: 6rem;
+            margin: 15rem 1rem 6rem 1rem;
+        }
+
+        &-sentenceText {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 900;
+            margin-top: 12rem;
+            background: transparent;
+        }
+    }
+
+    &_searchbar {
+        background-color: $dark-trans;
+        position: sticky;
+        top: 15vh;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+
+        &-form {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-input {
+            background-color: $white;
+            width: 75%;
+            height: 4rem;
+            font-size: 1rem;
+            text-align: center;
+            border-top-left-radius: 2rem;
+            border-bottom-left-radius: 2rem;
+            border: 2px solid $dark;
+            border-right: none;
+        }
+
+        &-submit {
+            cursor: pointer;
+            border-bottom-right-radius: 2rem;
+            background-color: $white;
+            width: 4rem;
+            height: 4rem;
+            font-size: 2rem;
+            border-top-right-radius: 2rem;
+            border: 2px solid $dark;
+            border-left: none;
+        }
+    }
+}
+
+.menu {
+    display: none;
+}
+
+
+@media #{$med} {
+    .header {
+        background-image: url("../../../public/images/banner-computer-med1.png");
+
+        &_banner {
+
+            &-nameLogo {
+                display: block;
+                height: 6rem;
+                margin: 15rem 1rem 6rem 1rem;
+            }
+        }
+    }
+}
+
+@media #{$lrg} {
+    .header {
+        background-image: url("../../../public/images/banner-computer-lrg1.png");
+
+        &_nav {
+            
+            &-listContainer {
+                background: none;
+                position: unset;
+                top: unset;
+                left: unset;
+                width: unset;
+
+            }
+            &-list {
+                margin: 1rem;
+            }
+        }
+    }
+
+    .menu {
+        display: block;
+        display: flex;
+    }
+}
