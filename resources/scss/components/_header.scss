@@ -1,4 +1,7 @@
 .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-image: url("../../../public/images/banner-computer-sml1.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -80,8 +83,6 @@
 
     &_searchbar {
         background-color: $dark-trans;
-        position: sticky;
-        top: 15vh;
         height: 10vh;
         display: flex;
         align-items: center;

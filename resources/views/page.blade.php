@@ -55,58 +55,60 @@
             </article>
         </section>
 
+        <section class="header_searchbar">
+
+            <form class="header_searchbar-form">
+                <input class="header_searchbar-input" type="text" placeholder="Barre de recherche">
+                <button class="header_searchbar-submit" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+        </section>
+
     </header>
 
-    <section class="header_searchbar">
 
-        <form class="header_searchbar-form">
-            <input class="header_searchbar-input" type="text" placeholder="Barre de recherche">
-            <button class="header_searchbar-submit" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </form>
-
-    </section>
 
     <main>
 
-    @section ('body')
-    content
-    @show
+        @section ('body')
+        content
+        @show
 
-    <section class="main_label">
+        <section class="main_label">
 
-        <article class="main_label-container">
-            <img class="main_label-img" src="images/service-assistance.jpg" alt="">
-            <div class="main_label-text">Assistance par téléphone tous les jours de 10h à 18h</div>
-        </article>
+            <article class="main_label-container">
+                <img class="main_label-img" src="images/service-assistance.jpg" alt="">
+                <div class="main_label-text">Assistance par téléphone tous les jours de 10h à 18h</div>
+            </article>
 
-        <article class="main_label-container">
-            <img class="main_label-img" src="images/service-fastdelivery.jpg" alt="">
-            <div class="main_label-text">Livré demain pour toute commande passé avant 15H.</div>
-        </article>
+            <article class="main_label-container">
+                <img class="main_label-img" src="images/service-fastdelivery.jpg" alt="">
+                <div class="main_label-text">Livré demain pour toute commande passé avant 15H.</div>
+            </article>
 
-        <article class="main_label-container">
-            <img class="main_label-img" src="images/service-3xsansfrais.png" alt="">
-            <div class="main_label-text">Payer en 3x sans frais</div>
-        </article>
+            <article class="main_label-container">
+                <img class="main_label-img" src="images/service-3xsansfrais.png" alt="">
+                <div class="main_label-text">Payer en 3x sans frais</div>
+            </article>
 
-        <article class="main_label-container">
-            <img class="main_label-img" src="images/service-safedelivery.jpg" alt="">
-            <div class="main_label-text">Livraison sécurisé et protégé garantie</div>
-        </article>
+            <article class="main_label-container">
+                <img class="main_label-img" src="images/service-safedelivery.jpg" alt="">
+                <div class="main_label-text">Livraison sécurisé et protégé garantie</div>
+            </article>
 
-    </section>
+        </section>
 
-    <section class="main_cgv">
+        <section class="main_cgv">
 
-        <ul class="main_cgv-container">
-            <li class="main_cgv-list"><a href="#" class="main_cgv-link">Mentions légales</a></li>
-            <li class="main_cgv-list"><a href="#" class="main_cgv-link">Conditions générales de vente</a></li>
-            <li class="main_cgv-list"><a href="#" class="main_cgv-link">Contact</a></li>
-        </ul>
+            <ul class="main_cgv-container">
+                <li class="main_cgv-list"><a href="#" class="main_cgv-link">Mentions légales</a></li>
+                <li class="main_cgv-list"><a href="#" class="main_cgv-link">Conditions générales de vente</a></li>
+                <li class="main_cgv-list"><a href="#" class="main_cgv-link">Contact</a></li>
+            </ul>
 
-    </section>
+        </section>
 
     </main>
 

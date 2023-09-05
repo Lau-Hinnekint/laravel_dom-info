@@ -1,3 +1,60 @@
-.text {
-    font-size: 3rem;
+.product {
+
+    &_card {
+
+        &-container {
+            border: solid 2px $primary;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            margin: 2rem;
+        }
+
+        &-img {
+            width: 100%;
+            margin: auto;
+        }
+
+        &-name {
+            text-align: center;
+            font-size: 1rem;
+            margin: 1rem;
+        }
+
+        &-box {
+            margin: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+                    
+        }
+
+        &-description {
+            text-justify: auto;
+            font-size: 1rem;
+        }
+
+        &-price {
+            text-align: center;
+            margin: 1rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            width: 50%;
+        }
+
+        &-button {
+            background-color: $secondary;
+            border: solid 2px $primary;
+            border-radius: 1.5rem;
+            color: $primary;
+            width: 50%;
+        }
+
+        &-link {
+            font-size: 1rem;
+            background: transparent;
+        }
+
+    }
 }
