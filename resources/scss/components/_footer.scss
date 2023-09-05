@@ -1,0 +1,26 @@
+.footer {
+    position: sticky;
+    bottom: 0;
+
+    &_container {
+        display: flex;
+        height: 4rem;
+        padding: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        background-color : $dark-trans;
+        backdrop-filter: blur(15px);
+
+        &-list {
+            margin: 0 .5rem 0 .5rem;
+            text-align: center;
+            background-color: transparent;
+        }
+
+        &-link {
+            font-size: 1rem;
+            font-weight: 900;
+            background-color: transparent;
+        }
+    }
+}

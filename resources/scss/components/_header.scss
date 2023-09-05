@@ -18,6 +18,8 @@
             cursor: pointer;
             height: 75%;
             margin-left: 2rem;
+            border: solid 2px $primary;
+            border-radius: 2rem;
         }
 
         &-listContainer {
@@ -58,12 +60,12 @@
             align-items: center;
         }
 
-        &-nameLogo {
-            display: none;
-        }
+        // &-nameLogo {
+        //     display: none;
+        // }
 
         &-nameTitle {
-            height: 6rem;
+            height: 5rem;
             margin: 15rem 1rem 6rem 1rem;
         }
 
@@ -71,7 +73,7 @@
             text-align: center;
             font-size: 1rem;
             font-weight: 900;
-            margin-top: 12rem;
+            margin: 6rem 1rem 6rem 1rem;
             background: transparent;
         }
     }
@@ -130,11 +132,16 @@
 
         &_banner {
 
-            &-nameLogo {
-                display: block;
-                height: 6rem;
+            &-nameTitle {
+                height: 8rem;
                 margin: 15rem 1rem 6rem 1rem;
             }
+
+            // &-nameLogo {
+            //     display: block;
+            //     height: 6rem;
+            //     margin: 15rem 1rem 6rem 1rem;
+            // }
         }
     }
 }
@@ -155,6 +162,23 @@
             }
             &-list {
                 margin: 1rem;
+            }
+        }
+
+        &_banner {
+
+            &-nameContainer {
+                justify-content: left;
+            }
+
+            &-nameTitle {
+                height: 10rem;
+                margin: 15rem 1rem 1rem 6rem;
+            }
+
+            &-sentenceText {
+                text-align: unset;
+                margin: 3rem 1rem 1rem 6rem;
             }
         }
     }
