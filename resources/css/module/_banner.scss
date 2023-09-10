@@ -1,0 +1,65 @@
+.banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+
+    margin-top: 6rem;   
+
+    @media #{$med} {
+        padding: 0 3rem 0 3rem;
+    }
+
+}
+
+
+.banner__logo {
+    height: 7rem;
+    width: 100%;
+
+    margin-top: 3rem;
+    
+    background-image: url("../../../public/images/title-rbg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @media #{$med} {
+        height: 14rem;
+
+    }
+
+    @media #{$lrg} {
+        justify-content: unset;
+        width: 40%;
+
+        margin-right: auto;
+        margin-left: 3rem;
+    }
+
+}
+
+.banner__sentence {
+    max-width: 100%;
+
+    margin: 3rem auto;
+
+    text-align: center;
+    font-size: 1.5rem;
+
+    @media #{$med} {
+        margin: 5rem auto;
+
+        font-size: 2rem;
+    }
+    @media #{$lrg} {
+        width: 40%;
+
+        margin-right: auto;
+        margin-left: 3rem;
+        
+        font-size: 2.5rem;
+        text-align: left;
+        
+    }
+}
