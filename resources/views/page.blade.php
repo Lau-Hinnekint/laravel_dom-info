@@ -20,25 +20,25 @@
 
     <header class="l-header">
 
-        <nav class="flex flex-between">
+        <nav class="nav">
 
-            <div class="flex toggleMenu">
-                <div class="open menu__icon"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
-                <div class="close menu__icon is-hidden"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
+            <div class="nav__toggleMenu">
+                <div class="open toggleMenu__icon"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
+                <div class="close toggleMenu__icon is-hidden"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
             </div>
 
-            <div class="logo nav__logo"></div>
-
             <ul class="nav__menu">
-                <li class="list menu__list"><a href="#" class="link menu__link">Ordinateur de bureau</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Ordinateur multimédia</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Ordinateur gaming</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Ordinateur portable</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Périphérique</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Ecran</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Déstockage & Bon plans</a></li>
-                <li class="list menu__list"><a href="#" class="link menu__link">Qui somme-nous ?</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Ordinateur de bureau</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Ordinateur multimédia</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Ordinateur gaming</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Ordinateur portable</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Périphérique</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Ecran</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Déstockage & Bon plans</a></li>
+                <li class="menu__list"><a href="#" class="menu__link">Qui somme-nous ?</a></li>
             </ul>
+
+            <div class="logo nav__logo"></div>
 
             <div class="icon nav__cart"></div>
 
@@ -51,14 +51,14 @@
 
         </section>
 
-        <section class="flex flex-column">
+        <section class="searchbar">
 
-            <form class="flex searchbar">
+            <form method="post" class="searchbar__form">
                 <input class="searchbar__input" type="text" placeholder="Barre de recherche">
                 <button class="searchbar__submit" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
-            </form>            
+            </form>
 
         </section>
 
@@ -66,9 +66,70 @@
 
     <main class="l-content">
 
+        @section ('body')
+        content
+        @show
+
+        <section class="label">
+
+            <article class="label__pnl">
+                <img class="label__img" src="../public/images/service-assistance.jpg" alt="">
+                <div class="label__text">Assistance par téléphone tous les jours de 10h à 18h</div>
+            </article>
+
+            <article class="label__pnl">
+                <img class="label__img" src="../public/images/service-fastdelivery.jpg" alt="">
+                <div class="label__text">Livré demain pour toute commande passé avant 15H.</div>
+            </article>
+
+            <article class="label__pnl">
+                <img class="label__img" src="../public/images/service-3xsansfrais.png" alt="">
+                <div class="label__text">Payer en 3x sans frais</div>
+            </article>
+
+            <article class="label__pnl">
+                <img class="label__img" src="../public/images/service-safedelivery.jpg" alt="">
+                <div class="label__text">Livraison sécurisé et protégé garantie</div>
+            </article>
+
+        </section>
+
+        <section class="cgv">
+            <ul class="cgv__box">
+                <li class="cgv__list"><a href="#" class="cgv__link">Mentions légales</a></li>
+                <li class="cgv__list"><a href="#" class="cgv__link">Conditions générales de vente</a></li>
+                <li class="cgv__list"><a href="#" class="cgv__link">Contact</a></li>
+            </ul>
+        </section>
+
     </main>
 
     <footer class="l-footer">
+
+        <ul class="footer">
+            <li class="footer__list">
+                <p class='footer__text'>Connecté en tant que : ***</p>
+                <?php
+                // if (isset($_SESSION['email'])) {
+                //     print "<p class='footer_box-text'>Connecté en tant que : " . $_SESSION['email'] . "</p>";
+                // } else {
+                //     print "<p class='footer_box-text'>Vous n'êtes pas connecté. </p>";
+                // }
+                ?>
+            </li>
+            <li class="footer__list"><a href="#" class="footer__lnk">Espace client</a></li>
+            <li class="footer__list">
+                <a href='#' class='footer__link'>Se déconnecter</a>
+                <?php
+                // if (isset($_SESSION['email'])) {
+                //     print "<a href='logout.php' class='footer_box-lnk'>Se déconnecter</a>";
+                // } else {
+                //     print "<a href='login.php' class='footer_box-lnk'>Se connecter</a>";
+                // }
+                ?>
+            </li>
+
+        </ul>
 
     </footer>
 

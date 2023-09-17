@@ -93,14 +93,3 @@ div[class*="gradient"]{
   background-image: radial-gradient(center 0, circle farthest-corner, rgba(0,0,0,0.15), rgba(0,0,0,0));
 }
 
-.is-visible {
-  display: block;
-  opacity: 1;
-  animation: slideIn 1s ease-in-out;
-}
-
-.is-hidden {
-  display: none;
-  opacity: 0;
-  animation: slideOut 1s ease-in-out;
-}
