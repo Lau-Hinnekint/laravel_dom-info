@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function  index() {
         $products = Product::inRandomOrder()
-            ->take(16)
+            ->take(20)
             ->get();            
 
         return view('productList', compact('products'));

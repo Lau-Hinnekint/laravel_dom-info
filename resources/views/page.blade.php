@@ -27,6 +27,8 @@
                 <div class="close toggleMenu__icon is-hidden"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
             </div>
 
+            <div class="logo nav__logo"></div>
+            
             <ul class="nav__menu">
                 <li class="menu__list"><a href="#" class="menu__link">Ordinateur de bureau</a></li>
                 <li class="menu__list"><a href="#" class="menu__link">Ordinateur multimédia</a></li>
@@ -36,9 +38,7 @@
                 <li class="menu__list"><a href="#" class="menu__link">Ecran</a></li>
                 <li class="menu__list"><a href="#" class="menu__link">Déstockage & Bon plans</a></li>
                 <li class="menu__list"><a href="#" class="menu__link">Qui somme-nous ?</a></li>
-            </ul>
-
-            <div class="logo nav__logo"></div>
+            </ul>            
 
             <div class="icon nav__cart"></div>
 
@@ -53,7 +53,7 @@
 
         <section class="searchbar">
 
-            <form method="post" class="searchbar__form">
+            <form method="get" class="searchbar__form">
                 <input class="searchbar__input" type="text" placeholder="Barre de recherche">
                 <button class="searchbar__submit" type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>

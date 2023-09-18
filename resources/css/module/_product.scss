@@ -1,0 +1,45 @@
+.product {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    padding: 5rem;
+
+    @media #{$med} {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media #{$lrg} {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.card {
+
+    &__container {
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        gap: 1rem;
+
+        border: 2px solid $primary;
+        border-radius: 1rem; 
+    }
+
+    &__img {
+        width: 100%;
+
+        border-radius: 1rem; 
+    }
+
+    &__name {
+        text-align: center;
+    }
+
+    &__box {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+}

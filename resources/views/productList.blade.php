@@ -2,16 +2,16 @@
 
 @section ('body')
 
-<section class="main_product">
+<section class="product">
     @foreach ($products as $product)
 
-    <article class="product_card-container">
-            <img src="{{ $product->image }}" alt="" class="product_card-img" />
-            <h1 class="product_card-name">{{ $product->name }}</h1>
-            <p class="product_card-description">{{ $product->description }}</p>
-        <div class="product_card-box">
-            <p class="product_card-price">{{ $product->price }} €</p>
-            <button class="product_card-button"><a href="#" class="product_card-link">Voir produit</a></button>
+    <article class="card__container">
+            <img src="{{ $product->image }}" alt="" class="card__img" />
+            <h4 class="card__name">{{ $product->name }}</h4>
+            <p class="card__text">{{ $product->description }}</p>
+        <div class="card__box">
+            <p class="card__price">{{ $product->price }} €</p>
+            <button class="button card__button"><a href="#" class="card__link">Voir produit</a></button>
         </div>
     </article>
 

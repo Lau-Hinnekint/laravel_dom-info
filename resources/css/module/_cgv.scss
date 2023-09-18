@@ -1,18 +1,20 @@
 .cgv {
 
     &__box {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;        
         margin: auto;
-        height: 4rem;
         padding: 0.5rem;
-        
+
         background-color: $dark-trans;
+
+        @media #{$med} {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
     }
 
     &__list {
-        margin: 0 .5rem 0 .5rem;
+        margin: 1rem;
         text-align: center;
         background-color: transparent;
     }
