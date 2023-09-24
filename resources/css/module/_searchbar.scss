@@ -1,0 +1,46 @@
+.searchbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 6rem;
+        width: 100%;
+
+        background-color: $dark-trans;
+    }
+
+    &__input {
+        height: 2.5rem;
+        width: 70%;
+
+        border: none;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+
+        background-color: $white;
+
+        text-align: center;
+        color: $black;
+
+        @media #{$lrg} {
+            width: 50%;
+        }
+    }
+
+    &__submit {
+        height: 2.5rem;
+        width: 5%;
+
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+
+        background-color: $white;
+
+        color: $black;
+    }
+}

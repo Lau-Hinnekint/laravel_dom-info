@@ -1,0 +1,15 @@
+.is-visible {
+  display: block;
+  opacity: 1;
+  animation: slideIn 1s ease-in-out;
+}
+
+.is-hidden {
+  display: none;
+  opacity: 0;
+  animation: slideOut 1s ease-in-out;
+}
+
+.secondaryBg {
+  background-color: $secondary;
+}

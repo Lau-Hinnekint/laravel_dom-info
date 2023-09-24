@@ -1,0 +1,13 @@
+.l-header {
+    background-image: url("../../../public/images/banner-computer-sml1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    @media #{$med} {
+        background-image: url("../../../public/images/banner-computer-med1.png"); 
+    }
+
+    @media #{$lrg} {
+        background-image: url("../../../public/images/banner-computer-lrg1.png"); 
+    }
+}

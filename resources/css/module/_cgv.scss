@@ -1,0 +1,27 @@
+.cgv {
+
+    &__box {
+        margin: auto;
+        padding: 0.5rem;
+
+        background-color: $dark-trans;
+
+        @media #{$med} {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+    }
+
+    &__list {
+        margin: 1rem;
+        text-align: center;
+        background-color: transparent;
+    }
+
+    &__link {
+        font-size: 1rem;
+        font-weight: 900;
+        background-color: transparent;
+    }
+}

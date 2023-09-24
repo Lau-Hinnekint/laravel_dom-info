@@ -16,11 +16,15 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+
+        $productTypes= ['Ordinateurs de bureau' ,' Ordinateurs multimédia', 'Ordinateurs portable', 'Ordinateurs gaming', 'Périphériques', 'Ecrans'];
+
         return [
-            'name' => $this->faker->sentence(),
-            'description' => $this->faker->sentence(rand(1,3), true),
-            'image' => $this->faker->imageUrl(),
-            'price' => random_int(5000,50000)
+            'product_type' => $this->faker->randomElement($productTypes),
+            'product_name' => $this->faker->words(rand(2,4), true),
+            'product_img' => $this->faker->imageUrl(),
+            'product_desc' => $this->faker->sentence(),
+            'product_price' => random_int(50,500)
         ];
     }
 }
