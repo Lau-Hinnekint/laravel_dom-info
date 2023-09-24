@@ -30,14 +30,12 @@
             <div class="logo nav__logo"></div>
             
             <ul class="nav__menu">
-                <li class="menu__list"><a href="#" class="menu__link">Ordinateur de bureau</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Ordinateur multimédia</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Ordinateur gaming</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Ordinateur portable</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Périphérique</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Ecran</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Déstockage & Bon plans</a></li>
-                <li class="menu__list"><a href="#" class="menu__link">Qui somme-nous ?</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=bureau" class="menu__link">Ordinateur de bureau</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=multimédia" class="menu__link">Ordinateur multimédia</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=gaming" class="menu__link">Ordinateur gaming</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=portable" class="menu__link">Ordinateur portable</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=périph" class="menu__link">Périphérique</a></li>
+                <li class="menu__list"><a href="{{ route('productList') }}?type=écran" class="menu__link">Ecran</a></li>
             </ul>            
 
             <div class="icon nav__cart"></div>

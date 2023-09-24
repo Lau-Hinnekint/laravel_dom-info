@@ -11,6 +11,8 @@ const burgerMenu = document.querySelector('.nav__menu');
 
 /**
  * Hide the button open to let the the close button replace him and open the menu
+ * 
+ * @return void
  */
 function openMenu() {
     burgerOpen.classList.add('is-hidden');
@@ -21,6 +23,8 @@ function openMenu() {
 
 /**
  * Hide the button close to let the the open button replace him and hide the menu
+ * 
+ * @return void
  */
 function closeMenu() {
     burgerClose.classList.add('is-hidden');
@@ -41,10 +45,20 @@ burgerClose.addEventListener('click', closeMenu);
 
 const menuItems = document.querySelectorAll('.nav__menu li')
 
+/**
+ * Add the CSS class '.secondaryBg' when mouseOver
+ * 
+ * @return void
+ */
 function bgMouseOver() {
     this.classList.add('secondaryBg');
 }
 
+/**
+ * Remove the CSS class '.secondaryBg' when mouseOut
+ * 
+ * @return void
+ */
 function bgMouseOut() {
     this.classList.remove('secondaryBg');
 }
@@ -55,23 +69,3 @@ menuItems.forEach(function(item) {
 });
 
 
-// $(document).ready(function() {
-//     $('.nav__menu li').hover(
-
-//         /**
-//          * Call the function when the mouse enter in the area of the object
-//          * and set the css class active
-//          */
-//         function() {
-//             $(this).toggleClass('secondaryBg', true);
-//         },
-
-//         /**
-//          * Call the function when the mouse leave the area of the object
-//          * and set the css class inactive
-//          */
-//         function() {
-//             $(this).toggleClass('secondaryBg', false);
-//         }
-//     );
-// });

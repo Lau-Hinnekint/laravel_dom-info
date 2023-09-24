@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('product-list', [ProductController::class,'index'])->name('productList');
+Route::get('product-list', [ProductController::class,'list'])->name('productList');
+Route::get('product-view', [ProductController::class,'view'])->name('productView');
