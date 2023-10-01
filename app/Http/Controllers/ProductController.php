@@ -2,37 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    public function  list(Request $request) {
+    public function  indexList(Request $request)
+    {
 
-        $type = $request->input('type');
-        // var_dump($type);
+        $categoryID = $request->input('cat_id');
+        $category = Category::find($categoryID);
+        // var_dump($category);
         // exit;
 
-        $products = Product::where('product_type', 'LIKE', '%' . $type . '%')
-            ->take(20)
-            ->get();       
-        // var_dump($products);
-        // exit;
+        if (isset($category)) {
+            $products = $category->products()
+                ->take(20)
+                ->get();
+        } 
+        else {
+            $products = Product::all();
+        }
 
         return view('productList', compact('products'));
     }
 
 
 
-    public function  view(Request $request) {
+    public function  indexView(Request $request)
+    {
 
         $id = $request->input('id');
         // var_dump($id);
         // exit;
 
         $productView = Product::where('id', $id)
-            ->get();  
+            ->get();
         // var_dump($productView[0]->product_name);
         // exit;          
 

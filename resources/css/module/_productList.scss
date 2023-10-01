@@ -2,14 +2,16 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
-    padding: 5rem;
+    padding: 1rem;
 
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
+        padding: 4rem;
     }
 
     @media #{$lrg} {
         grid-template-columns: repeat(5, 1fr);
+        padding: 8rem;
     }
 }
 
@@ -23,8 +25,9 @@
         padding: 1rem;
         gap: 1rem;
 
-        border: 2px solid $primary;
+        border: 2px solid $white;
         border-radius: 1rem; 
+        box-shadow: 4px 4px 2px 0px rgb(255, 255, 255,0.6);
     }
 
     &__img {

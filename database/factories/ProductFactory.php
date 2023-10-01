@@ -17,10 +17,7 @@ class ProductFactory extends Factory
     public function definition()
     {
 
-        $productTypes= ['Ordinateurs de bureau' ,' Ordinateurs multimédia', 'Ordinateurs portable', 'Ordinateurs gaming', 'Périphériques', 'Ecrans'];
-
         return [
-            'product_type' => $this->faker->randomElement($productTypes),
             'product_name' => $this->faker->words(rand(2,4), true),
             'product_img' => $this->faker->imageUrl(),
             'product_desc' => $this->faker->sentence(),

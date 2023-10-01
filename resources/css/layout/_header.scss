@@ -2,6 +2,8 @@
     background-image: url("../../../public/images/banner-computer-sml1.png");
     background-size: cover;
     background-repeat: no-repeat;
+
+    border-bottom: solid 2px $white;
     
     @media #{$med} {
         background-image: url("../../../public/images/banner-computer-med1.png"); 
