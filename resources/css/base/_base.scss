@@ -1,15 +1,24 @@
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+table {
+    display:table;
+
+    border-style: ridge;
+    border-width: 2px;
+    border: 2px solid $white;
+
+    background-color: $dark;
 }
 
-.flex-column {
-    flex-direction: column;
+th {
+    border: 2px solid $white;
 }
 
-.flex-between {
-    justify-content: space-between;
+td {
+    display: table-cell;
+    padding: .5rem;
+
+    border: 2px groove $white;
+
+    text-align: center;
 }
 
 .logo {

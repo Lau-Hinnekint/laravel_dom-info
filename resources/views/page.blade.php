@@ -30,20 +30,12 @@
             <div class="nav__logo logo"></div>
             
             <ul class="nav__menu">
-                <!-- <li class="menu__list"><a href="{{ route('productList') }}?type=bureau" class="menu__link">Ordinateur de bureau</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=multimédia" class="menu__link">Ordinateur multimédia</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=gaming" class="menu__link">Ordinateur gaming</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=portable" class="menu__link">Ordinateur portable</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=périph" class="menu__link">Périphérique</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=écran" class="menu__link">Ecran</a></li> -->
+
                 @foreach ($categories as $category)
                 <li class="menu__list"><a href="{{ route('productList') }}?cat_id={{ $category->id }}" class="menu__link">{{ $category->category_name }}</a></li>
                 @endforeach
+
             </ul>
-            <?php
-                // var_dump($categories[0]->category_name);
-                // exit;
-            ?>
 
             <div class="nav__cart icon"></div>
 
