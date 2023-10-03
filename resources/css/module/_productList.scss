@@ -52,6 +52,16 @@
     }
 }
 
+.openFilter {
+    background-color: $white;
+    border-radius: 2rem;
+}
+
+.closeFilter {
+    background-color: $white;
+    border-radius: 2rem;
+}
+
 .cardFilter {
     width: 20%;
     margin: 8rem 1rem;
@@ -60,25 +70,22 @@
         padding: .5rem;
     }
 
-    &__form {
+    &__feature{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__chkbox {
+        width: 1rem;
+        height: 1rem;
         padding: .5rem;
     }
 
     &__label {
+        width: 80%;
+        margin-left: 1rem;
         text-transform: uppercase;
-    }
-
-    &__select {
-        width: 100%;
-        margin: 1rem;
-        padding: .5rem;
-
-        text-align: center;
-    }
-
-    &__option {
-        width: 100%;
-        padding: .5rem;
     }
 
     &__input {

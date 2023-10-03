@@ -5,8 +5,8 @@ import './bootstrap';
 // # BURGER MENU #
 // ###############
 
-const burgerOpen = document.querySelector('.open');
-const burgerClose = document.querySelector('.close');
+const burgerOpen = document.querySelector('.openBurger');
+const burgerClose = document.querySelector('.closeBurger');
 const burgerMenu = document.querySelector('.nav__menu');
 
 /**

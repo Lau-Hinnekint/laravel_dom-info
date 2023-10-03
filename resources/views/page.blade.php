@@ -23,8 +23,8 @@
         <nav class="nav">
 
             <div class="nav__toggleMenu">
-                <div class="toggleMenu__icon open"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
-                <div class="toggleMenu__icon is-hidden close"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
+                <div class="toggleMenu__icon openBurger"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
+                <div class="toggleMenu__icon is-hidden closeBurger"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
             </div>
 
             <div class="nav__logo logo"></div>
