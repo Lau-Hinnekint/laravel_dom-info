@@ -1,24 +1,19 @@
 .productView {
     padding: 1rem;
-
-
 }
 
-.card {
-    border: solid 2px $primary;
-    border-radius: 1rem;
-}
 
 .cardHeader {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    // justify-content: center;
+    gap: 2rem;
 
     &__name {
         text-align: center;
         text-transform: uppercase;
+        margin:auto;
     }
 
     &__img {
@@ -27,7 +22,22 @@
     }
 
     &__text {
-        margin: 1rem 0;
+        margin:auto;
+    }
+    &__price {
+        margin:auto;
+        font-size: 2rem;
+    }
+
+    &__counter {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    &__count {
+        font-size: 2rem;
     }
 
     &__box {

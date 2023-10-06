@@ -17,14 +17,22 @@
 
             <img src="{{ $product->product_img }}" alt="" class="cardHeader__img" />
 
-            <div class="cardHeader__box">
+            <!-- <div class="cardHeader__box"> -->
                 <p class="cardHeader__text">{{ $product->product_desc }}</p>
-            </div>
+            <!-- </div> -->
+            <p class="cardHeader__price">{{ $product->product_price }} €</p>
 
-            <div class="cardHeader__box">
-                <p class="cardHeader__price">{{ $product->product_price }} €</p>
-                <button class="cardHeader__button button"><a href="#" class="cardHeader__link">Ajouter au panier</a></button>
-            </div>
+            <!-- <div class="cardHeader__box"> -->
+                <div class="cardHeader__counter">
+                    <button class="decrement button">-</button>
+                        <p class="cardHeader__count">0</p>
+                    <button class="increment button">+</button>
+                </div>
+
+                <button class="cardHeader__button button">
+                    <a href="#" class="cardHeader__link">Ajouter au panier</a>
+                </button>
+            <!-- </div> -->
         </article>
 
         <article class="cardTable">
