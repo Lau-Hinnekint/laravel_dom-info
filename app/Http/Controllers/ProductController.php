@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    public function  indexList(Request $request)
+    public function  listProduct(Request $request)
     {
 
         $categoryID = $request->input('cat_id');
@@ -39,7 +39,7 @@ class ProductController extends Controller
             ->distinct()
             ->pluck('proc_frequency');
 
-        $memorySizes = DB::table('category_product')
+        $memoSizes = DB::table('category_product')
             ->where('category_id', $categoryID)
             ->distinct()
             ->pluck('memo_size');
@@ -75,7 +75,7 @@ class ProductController extends Controller
             'brands' => $brands,
             'procTypes' => $procTypes,
             'procFrequencies' => $procFrequencies,
-            'memorySizes' => $memorySizes,
+            'memoSizes' => $memoSizes,
             'memoTypes' => $memoTypes,
             'storPrimaries' => $storPrimaries,
             'dispChipsets' => $dispChipsets,
@@ -84,7 +84,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function  indexView(Request $request)
+
+
+
+    public function  detailProduct(Request $request)
     {
 
         $productID = $request->input('id');
@@ -96,6 +99,78 @@ class ProductController extends Controller
             $pivotData[] = $category->pivot;
         }
 
-        return view('productView', compact('product', 'pivotData'));
+        return view('productDetail', compact('product', 'pivotData'));
+    }
+
+
+
+
+    public function filterProduct(Request $request)
+    {
+
+        $categoryID = $request->input('cat_id');
+
+        if (isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'FILTRER') {
+            $query = Product::query();
+
+            if (!empty($request->input('brand')) && is_array($request->input('brand'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('gene_brand', $request->input('brand'));
+                });
+            }
+            if (!empty($request->input('procType')) && is_array($request->input('procType'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('proc_Type', $request->input('procType'));
+                });
+            }
+            if (!empty($request->input('procFrequency')) && is_array($request->input('procFrequency'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('proc_Frequency', $request->input('procFrequency'));
+                });
+            }
+            if (!empty($request->input('memorySize')) && is_array($request->input('memorySize'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('memo_Size', $request->input('memorySize'));
+                });
+            }
+            if (!empty($request->input('memoType')) && is_array($request->input('memoType'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('memo_Type', $request->input('memoType'));
+                });
+            }
+            if (!empty($request->input('storPrimary')) && is_array($request->input('storPrimary'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('stor_Primary', $request->input('storPrimary'));
+                });
+            }
+            if (!empty($request->input('dispChipset')) && is_array($request->input('dispChipset'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('disp_Chipset', $request->input('dispChipset'));
+                });
+            }
+            if (!empty($request->input('dispMemory')) && is_array($request->input('dispMemory'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('disp_Memory', $request->input('dispMemory'));
+                });
+            }
+            if (!empty($request->input('netwWire')) && is_array($request->input('netwWire'))) {
+                $query->whereHas('categories', function ($q) use ($request) {
+                    $q->whereIn('netw_wireless', $request->input('netwWire'));
+                });
+            }
+
+            $resultats = $query->get();
+        } 
+        
+        else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {
+            $query = Product::query();
+            $searchValue = $request->input('searchValue');
+
+            $query->where('product_name', 'like', "%$searchValue%");
+
+            $resultats = $query->get();
+        }
+
+        return view('productFilter', compact('resultats', 'categoryID'));
     }
 }

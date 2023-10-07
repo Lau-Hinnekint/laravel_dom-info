@@ -18,7 +18,7 @@ function openMenu() {
     burgerOpen.classList.add('is-hidden');
     burgerClose.classList.remove('is-hidden');
     burgerMenu.classList.add('is-visible');
-    
+
 }
 
 /**
@@ -57,7 +57,7 @@ function openFilter() {
     filterOpen.classList.add('is-hidden');
     filterClose.classList.remove('is-hidden');
     filterMenu.classList.add('is-visible');
-    
+
 }
 
 /**
@@ -107,7 +107,7 @@ function bgMouseOut() {
     this.classList.remove('secondaryBg');
 }
 
-menuItems.forEach(function(item) {
+menuItems.forEach(function (item) {
     item.addEventListener('mouseover', bgMouseOver);
     item.addEventListener('mouseout', bgMouseOut);
 });
@@ -120,49 +120,36 @@ menuItems.forEach(function(item) {
 
 const decrementButton = document.querySelector(".decrement");
 const incrementButton = document.querySelector(".increment");
-const countElement = document.querySelector(".cardHeader__count");
- 
-function incrementCounter(countElem) {
-    const currentValue = parseInt(countElem.innerHTML, 10); // Convertit la valeur actuelle en nombre entier
-    const newValue = currentValue + 1; // Incrémente la valeur
-    countElem.innerHTML = newValue; // Met à jour la valeur dans countElem
+const counterDisplay = document.querySelector(".counter");
+
+console.log(counterDisplay);
+
+var count = 0;
+
+function updateCounter(counter, newValue) {
+    counter.innerHTML = newValue;
+    console.log(newValue)
 }
 
-function decrementCounter(countElem) {
-    const currentValue = parseInt(countElem.innerHTML, 10); // Convertit la valeur actuelle en nombre entier
-    if (currentValue > 0) {
-        const newValue = currentValue - 1; // Décrémente la valeur si elle est supérieure à zéro
-        countElem.innerHTML = newValue; // Met à jour la valeur dans countElem
+function increment(button, counter) {
+    button.addEventListener("click", () => {
+        count++;
+        updateCounter(counter, count)
     }
-}
+    )
+};
 
-incrementButton.addEventListener("click", incrementCounter(countElement));
-decrementButton.addEventListener("click", decrementCounter(countElement));
-
-
-    // let countProduct = 0;
-
-    // function updateCounter(countElem, count) {
-    //     countElem.innerText = count;
-    // }
-
-    // function increment(button, countElem, count) {
-    //     button.addEventListener("click", () => {
-    //         count++;
-    //         updateCounter(countElem, count)
-    //     }
-    // )};
-
-    // function decrement(button, countElem, count) {
-    //     button.addEventListener("click", () => {
-    //         count--;
-    //         updateCounter(countElem, count)
-    //     }
-    // )};
+function decrement(button, counter) {
+    button.addEventListener("click", () => {
+        count--;
+        updateCounter(counter, count)
+    }
+    )
+};
 
 
-    // increment(incrementButton, countElement, countProduct);
-    // decrement(decrementButton, countElement, countProduct);
+increment(incrementButton, counterDisplay, count);
+decrement(decrementButton, counterDisplay, count);
 
 
 

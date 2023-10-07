@@ -4,10 +4,9 @@
 
 
 .cardHeader {
-    padding: 1rem;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
+    padding: .5rem;
     gap: 2rem;
 
     &__name {
@@ -24,9 +23,19 @@
     &__text {
         margin:auto;
     }
+
     &__price {
         margin:auto;
         font-size: 2rem;
+    }
+
+    &__add {
+        text-align: center;
+
+        @media #{$lrg} {
+            width: 25%;
+            margin: auto;
+        }
     }
 
     &__counter {
@@ -34,6 +43,11 @@
         justify-content: space-between;
         align-items: center;
         gap: 2rem;
+
+        @media #{$lrg} {
+            width: 25%;
+            margin: auto;
+        }
     }
 
     &__count {
@@ -49,7 +63,6 @@
 }
 
 .cardTable {
-    max-width: 95%;
     overflow: hidden;
     margin: auto;
     padding: .5rem;

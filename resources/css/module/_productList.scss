@@ -8,23 +8,23 @@
     @media #{$lrg} {
         flex-direction: row;
         align-items:self-start;
+        margin: 0 10rem; 
     }
 }
 
 .cardList {
-    width: 80%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
 
     gap: 1rem;
     margin: 1rem 1rem;
-
+    
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
     }
 
     @media #{$lrg} {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     &__container {
@@ -81,16 +81,12 @@
 
     @media #{$lrg} {
         display: block;
-        width: 20%;
+        width: 40%;
     }
 
     &__container {
-        padding: .5rem;
+        padding: 1rem;
         margin: 0 1rem;
-
-        // @media #{$lrg} {
-        //     width: 20%;
-        // }
     }
 
     &__feature{
@@ -103,6 +99,11 @@
         width: 3rem;
         height: 3rem;
         padding: .5rem;
+
+        @media #{$lrg} {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 
     &__label {
@@ -110,6 +111,9 @@
         font-size: 1.5rem;
         margin-left: 1rem;
         text-transform: uppercase;
+        @media #{$lrg} {
+            font-size: 1rem;;
+        }
     }
 
     &__input {

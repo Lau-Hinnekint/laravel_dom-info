@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $title = "Index" ?>
-
 <head>
 
     <meta charset="UTF-8" />
@@ -28,7 +26,7 @@
             </div>
 
             <div class="nav__logo logo"></div>
-            
+
             <ul class="nav__menu">
 
                 @foreach ($categories as $category)
@@ -50,9 +48,10 @@
 
         <section class="searchbar">
 
-            <form method="get" class="searchbar__form">
-                <input class="searchbar__input" type="text" placeholder="Barre de recherche">
-                <button class="searchbar__submit" type="submit">
+            <form action="{{ route('productFilter') }}" method="post" class="searchbar__form">
+                @csrf
+                <input class="searchbar__input" type="text" placeholder="Barre de recherche" name="searchValue">
+                <button class="searchbar__submit" type="submit" name="ACTION" value="RECHERCHER">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>

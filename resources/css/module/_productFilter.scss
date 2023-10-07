@@ -1,0 +1,58 @@
+.productFilter {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    @media #{$lrg} {
+        flex-direction: row;
+        align-items:self-start;
+        margin: 0 10rem; 
+    }
+}
+
+.cardFiltered {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    gap: 1rem;
+    margin: 1rem 1rem;
+    
+    @media #{$med} {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media #{$lrg} {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__container {
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    
+        padding: 1rem;
+        margin:1rem auto;
+        gap: 1rem;
+    
+        border: 2px solid $white;
+        border-radius: 1rem; 
+        box-shadow: 4px 4px 2px 0px rgb(255, 255, 255,0.6);
+    }
+
+    &__img {
+        width: 100%;
+
+        border-radius: 1rem; 
+    }
+
+    &__name {
+        text-align: center;
+    }
+
+    &__price {
+        font-size: 2rem;
+    }
+}
