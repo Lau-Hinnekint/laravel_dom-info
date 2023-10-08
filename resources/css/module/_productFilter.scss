@@ -17,14 +17,14 @@
     grid-template-columns: repeat(1, 1fr);
 
     gap: 1rem;
-    margin: 1rem 1rem;
+    margin: 1rem auto;
     
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
     }
 
     @media #{$lrg} {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     &__container {
@@ -44,12 +44,13 @@
 
     &__img {
         width: 100%;
-
+        margin-top: 2rem;
         border-radius: 1rem; 
     }
 
     &__name {
         text-align: center;
+        text-transform: uppercase;
     }
 
     &__price {

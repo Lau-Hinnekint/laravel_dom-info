@@ -2,7 +2,7 @@
 
 @section ('body')
 
-<?php $title= "Dom'Info - {{ $product->product_name }}"; ?>
+<?php $title= "Dom'Info - $product->product_name "; ?>
 
 <section class="productView">
 
@@ -19,17 +19,17 @@
             <p class="cardHeader__price">{{ $product->product_price }} €</p>
 
                 <div class="cardHeader__counter">
-                    <button class="decrement button">-</button>
+                    <span class="decrement neon">-</span>
                         <p class="cardHeader__count counter">0</p>
-                    <button class="increment button">+</button>
+                    <span class="increment neon">+</span>
                 </div>
 
-                <a href="#" class="cardHeader__add button">Ajouter au panier</a>
+                <span class="cardHeader__add neon">Ajouter au panier</span>
         </article>
 
         <article class="cardTable">
 
-            <table class="cardTable">
+            <table class="cardTable__container">
                 <tbody>
                         <td class="cardTable__title" colspan="2">INFORMATIONS GENERALES</td>
                     <tr>

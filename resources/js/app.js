@@ -95,7 +95,7 @@ const menuItems = document.querySelectorAll('.nav__menu li')
  * @return void
  */
 function bgMouseOver() {
-    this.classList.add('secondaryBg');
+    this.classList.add('neon');
 }
 
 /**
@@ -104,7 +104,7 @@ function bgMouseOver() {
  * @return void
  */
 function bgMouseOut() {
-    this.classList.remove('secondaryBg');
+    this.classList.remove('neon');
 }
 
 menuItems.forEach(function (item) {
@@ -141,15 +141,18 @@ function increment(button, counter) {
 
 function decrement(button, counter) {
     button.addEventListener("click", () => {
-        count--;
-        updateCounter(counter, count)
+        if ( count > 0) {
+            count--;
+            updateCounter(counter, count)
+        }
+
     }
     )
 };
 
 
-increment(incrementButton, counterDisplay, count);
-decrement(decrementButton, counterDisplay, count);
+increment(incrementButton, counterDisplay);
+decrement(decrementButton, counterDisplay);
 
 
 

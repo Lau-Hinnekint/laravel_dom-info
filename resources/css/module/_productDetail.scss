@@ -2,7 +2,6 @@
     padding: 1rem;
 }
 
-
 .cardHeader {
     display: flex;
     flex-direction: column;
@@ -54,6 +53,10 @@
         font-size: 2rem;
     }
 
+    &__add {
+        cursor: pointer;
+    }
+
     &__box {
         display: flex;
         justify-content: space-evenly;
@@ -62,16 +65,23 @@
 
 }
 
+.increment,
+.decrement {
+    cursor: pointer;
+}
+
 .cardTable {
-    overflow: hidden;
-    margin: auto;
-    padding: .5rem;
-    overflow-y: scroll;
+
+    &__container {
+        overflow: hidden;
+        margin: 5rem auto;
+        padding: .5rem;
+        overflow-y: scroll;
+    }
 
     &__title {
         font-weight: 700;
         color: $secondary;
-
     }
 
     &__feature {

@@ -3,7 +3,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    border-bottom: solid 2px $white;
+    border-bottom: solid 2px #37f713;
+    box-shadow: 0 4px 8px #37f713;    
     
     @media #{$med} {
         background-image: url("../../../public/images/banner-computer-med1.png"); 

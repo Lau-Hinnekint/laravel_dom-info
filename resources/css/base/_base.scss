@@ -3,7 +3,8 @@ table {
 
     border-style: ridge;
     border-width: 2px;
-    border: 2px solid $white;
+    border-color: $white;
+
 
     background-color: $dark;
 }
@@ -45,7 +46,7 @@ td {
     padding: 10px 40px 10px 40px;
     position: relative;
     border: 3px solid #ffffff;
-    border-radius: 20px;
+    border-radius: 1.5rem;
 
     &:hover {
         color: #000000;

@@ -15,9 +15,7 @@
 .cardList {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-
-    gap: 1rem;
-    margin: 1rem 1rem;
+    padding: 1rem 0;
     
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
@@ -32,28 +30,27 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-    
-        padding: 1rem;
-        margin:1rem auto;
-        gap: 1rem;
-    
-        border: 2px solid $white;
-        border-radius: 1rem; 
-        box-shadow: 4px 4px 2px 0px rgb(255, 255, 255,0.6);
+        margin: 1.5rem;
+        gap: 2rem;
     }
 
     &__img {
         width: 100%;
-
+        margin-top: 2rem;
         border-radius: 1rem; 
     }
 
     &__name {
         text-align: center;
+        text-transform: uppercase;
     }
 
     &__price {
         font-size: 2rem;
+    }
+
+    &__view {
+        margin-bottom: 2rem;
     }
 }
 
@@ -81,7 +78,7 @@
 
     @media #{$lrg} {
         display: block;
-        width: 40%;
+        width: 30%;
     }
 
     &__container {

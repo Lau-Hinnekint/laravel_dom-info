@@ -122,8 +122,8 @@
 
         @foreach ($products as $product)
 
-        <div class="cardList__container">
-            <img src="{{ $product->product_img }}" alt="" class="card__img" />
+        <div class="cardList__container neon">
+            <img src="{{ $product->product_img }}" alt="" class="cardList__img" />
             <h4 class="cardList__name">{{ $product->product_name }}</h4>
             <p class="cardList__text">{{ $product->product_desc }}</p>
             <p class="cardList__price"><strong>{{ $product->product_price }} €</strong></p>

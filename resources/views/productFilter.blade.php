@@ -8,7 +8,7 @@
 
     <article class="cardFiltered">
         @foreach ($resultats as $resultat)
-        <div class="cardList__container">
+        <div class="cardList__container neon">
             <img src="{{ $resultat->product_img }}" alt="" class="card__img" />
             <h4 class="cardList__name">{{ $resultat->product_name }}</h4>
             <p class="cardList__text">{{ $resultat->product_desc }}</p>
