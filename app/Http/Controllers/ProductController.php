@@ -20,54 +20,102 @@ class ProductController extends Controller
             $products = $category->products()
                 ->take(20)
                 ->get();
+
+            $brands = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('gene_brand');
+
+            $procTypes = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('proc_type');
+
+            $procFrequencies = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('proc_frequency');
+
+            $memoSizes = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('memo_size');
+
+            $memoTypes = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('memo_type');
+
+            $storPrimaries = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('stor_primary');
+
+            $dispChipsets = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('disp_chipset');
+
+            $dispMemories = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('disp_memory');
+
+            $netwWireless = DB::table('category_product')
+                ->where('category_id', $categoryID)
+                ->distinct()
+                ->pluck('netw_wireless');
         } else {
-            $products = Product::all();
+            $products = Product::with('categories')->get();
+
+            $brands = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.gene_brand');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.gene_brand')->toArray();
+
+            $procTypes = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.proc_type');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.proc_type')->toArray();
+            $procFrequencies = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.proc_frequency');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.proc_frequency')->toArray();
+            $memoSizes = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.memo_size');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.memo_size')->toArray();
+            $memoTypes = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.memo_type');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.memo_type')->toArray();
+            $storPrimaries = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.stor_primary');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.stor_primary')->toArray();
+            $dispChipsets = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.disp_chipset');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.disp_chipset')->toArray();
+            $dispMemories = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.disp_memory');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.disp_memory')->toArray();
+            $netwWireless = 
+            $products->flatMap(function ($product) {
+                return $product->categories->pluck('pivot.netw_wireless');
+            })->unique()->toArray();
+            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.netw_wireless')->toArray();
         }
 
-        $brands = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('gene_brand');
-
-        $procTypes = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('proc_type');
-
-        $procFrequencies = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('proc_frequency');
-
-        $memoSizes = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('memo_size');
-
-        $memoTypes = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('memo_type');
-
-        $storPrimaries = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('stor_primary');
-
-        $dispChipsets = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('disp_chipset');
-
-        $dispMemories = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('disp_memory');
-
-        $netwWireless = DB::table('category_product')
-            ->where('category_id', $categoryID)
-            ->distinct()
-            ->pluck('netw_wireless');
 
         return view('productList', [
             'categoryID' => $categoryID,
@@ -89,7 +137,6 @@ class ProductController extends Controller
 
     public function  detailProduct(Request $request)
     {
-
         $productID = $request->input('id');
         $product = Product::with('categories')->find($productID);
 
@@ -106,9 +153,9 @@ class ProductController extends Controller
 
 
     public function filterProduct(Request $request)
-    {
-
-        $categoryID = $request->input('cat_id');
+    { 
+        
+        $categoryID = $request->input('category_id');
 
         if (isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'FILTRER') {
             $query = Product::query();
@@ -160,6 +207,7 @@ class ProductController extends Controller
             }
 
             $resultats = $query->get();
+
         } 
         
         else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {
@@ -174,3 +222,4 @@ class ProductController extends Controller
         return view('productFilter', compact('resultats', 'categoryID'));
     }
 }
+

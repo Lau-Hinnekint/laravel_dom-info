@@ -2,7 +2,7 @@
 
 @section ('body')
 
-<?php $title= "Dom'Info - Liste de produit"; ?>
+<?php $title = "Dom'Info - Liste de produit"; ?>
 
 <section class="productList">
 
@@ -16,102 +16,102 @@
         </svg>
     </div>
 
-    <article class="cardFilter">
+    <article class="filter">
 
-        <div class="cardFilter__container">
-            <form action="{{ route('productFilter') }}" method="POST" class="cardFilter__form">
+        <div class="filter__container">
+            <form action="{{ route('productFilter') }}" method="POST" class="filter__form">
                 @csrf
-                <input class="cardFilter__input" type="hidden" name="cat_id" value="{{$categoryID}}" />
+                <input class="filter__input" type="hidden" name="category_id" value="{{$categoryID}}" />
                 @if (!is_null($brands) && count($brands) > 0)
-                <h6 class="cardFilter__title">Marque :</h6>
+                <h6 class="filter__title">Marque :</h6>
                 @foreach ($brands as $brand)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="brand[]" id="{{ $brand }}" value="{{$brand}}"></input>
-                    <label class="cardFilter__label" for="{{ $brand }}">{{ $brand }}</label>
-                </div>
+                    <label class="filter__label" for="{{ $brand }}">{{ $brand }}
+                        <input type="checkbox" class="filter__chkbox" name="brand[]" id="{{ $brand }}" value="{{$brand}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($procTypes) && count($procTypes) > 0)
-                <h6 class="cardFilter__title">Type de processeur :</h6>
+                <h6 class="filter__title">Type de processeur :</h6>
                 @foreach ($procTypes as $procType)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="procType[]" id="{{ $procType }}" value="{{$procType}}"></input>
-                    <label class="cardFilter__label" for="{{ $procType }}">{{ $procType }}</label>
-                </div>
+                    <label class="filter__label" for="{{ $procType }}">{{ $procType }}
+                        <input type="checkbox" class="filter__chkbox" name="procType[]" id="{{ $procType }}" value="{{$procType}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($procFrequencies) && count($procFrequencies) > 0)
-                <h6 class="cardFilter__title">Fréquence de processeur :</h6>
+                <h6 class="filter__title">Fréquence de processeur :</h6>
                 @foreach ($procFrequencies as $procFrequency)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="procFrequency[]" id="{{$procFrequency}}" value="{{$procFrequency}}"></input>
-                    <label class="cardFilter__label" for="{{$procFrequency}}">{{ $procFrequency }}</label>
-                </div>
+                    <label class="filter__label" for="{{$procFrequency}}">{{ $procFrequency }}
+                        <input type="checkbox" class="filter__chkbox" name="procFrequency[]" id="{{$procFrequency}}" value="{{$procFrequency}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($memoSizes) && count($memoSizes) > 0)
-                <h6 class="cardFilter__title">Quantité de mémoire :</h6>
+                <h6 class="filter__title">Quantité de mémoire :</h6>
                 @foreach ($memoSizes as $memoSize)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="memoSize[]" id="{{$memoSize}}" value="{{$memoSize}}"></input>
-                    <label class="cardFilter__label" for="{{$memoSize}}">{{ $memoSize }}</label>
-                </div>
+                    <label class="filter__label" for="{{$memoSize}}">{{ $memoSize }}
+                        <input type="checkbox" class="filter__chkbox" name="memoSize[]" id="{{$memoSize}}" value="{{$memoSize}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($memoTypes) && count($memoTypes) > 0)
-                <h6 class="cardFilter__title">Type de mémoire :</h6>
+                <h6 class="filter__title">Type de mémoire :</h6>
                 @foreach ($memoTypes as $memoType)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="memoType[]" id="{{$memoType}}" value="{{$memoType}}"></input>
-                    <label class="cardFilter__label" for="{{$memoType}}">{{ $memoType }}</label>
-                </div>
+                    <label class="filter__label" for="{{$memoType}}">{{ $memoType }}
+                        <input type="checkbox" class="filter__chkbox" name="memoType[]" id="{{$memoType}}" value="{{$memoType}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($storPrimaries) && count($storPrimaries) > 0)
-                <h6 class="cardFilter__title">Capacité de stockage :</h6>
+                <h6 class="filter__title">Capacité de stockage :</h6>
                 @foreach ($storPrimaries as $storPrimary)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="storPrimary[]" id="{{$storPrimary}}" value="{{$storPrimary}}"></input>
-                    <label class="cardFilter__label" for="{{$storPrimary}}">{{ $storPrimary }}</label>
-                </div>
+                    <label class="filter__label" for="{{$storPrimary}}">{{ $storPrimary }}
+                        <input type="checkbox" class="filter__chkbox" name="storPrimary[]" id="{{$storPrimary}}" value="{{$storPrimary}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($dispChipsets) && count($dispChipsets) > 0)
-                <h6 class="cardFilter__title">Chipset graphique :</h6>
+                <h6 class="filter__title">Chipset graphique :</h6>
                 @foreach ($dispChipsets as $dispChipset)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="dispChipset[]" id="dispChipset" value="{{$dispChipset}}"></input>
-                    <label class="cardFilter__label" for="{{$dispChipset}}">{{ $dispChipset }}</label>
-                </div>
+                    <label class="filter__label" for="{{$dispChipset}}">{{ $dispChipset }}
+                        <input type="checkbox" class="filter__chkbox" name="dispChipset[]" id="dispChipset" value="{{$dispChipset}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($dispMemories) && count($dispMemories) > 0)
-                <h6 class="cardFilter__title">Mémoire graphique :</h6>
+                <h6 class="filter__title">Mémoire graphique :</h6>
                 @foreach ($dispMemories as $dispMemory)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="dispMemory[]" id="{{$dispMemory}}" value="{{$dispMemory}}"></input>
-                    <label class="cardFilter__label" for="{{$dispMemory}}">{{ $dispMemory }}</label>
-                </div>
+                    <label class="filter__label" for="{{$dispMemory}}">{{ $dispMemory }}
+                        <input type="checkbox" class="filter__chkbox" name="dispMemory[]" id="{{$dispMemory}}" value="{{$dispMemory}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
 
                 @if (!is_null($netwWireless) && count($netwWireless) > 0)
-                <h6 class="cardFilter__title">Wifi :</h6>
+                <h6 class="filter__title">Wifi :</h6>
                 @foreach ($netwWireless as $netwWire)
-                <div class="cardFilter__feature">
-                    <input type="checkbox" class="cardFilter__chkbox" name="netwWire[]" id="{{$netwWire}}" value="{{$netwWire}}"></input>
-                    <label class="cardFilter__label" for="{{$netwWire}}">{{ $netwWire }}</label>
-                </div>
+                    <label class="filter__label" for="{{$netwWire}}">{{ $netwWire }}
+                        <input type="checkbox" class="filter__chkbox" name="netwWire[]" id="{{$netwWire}}" value="{{$netwWire}}"></input>
+                        <span class="filter__chkmark"></span>
+                    </label>
                 @endforeach
                 @endif
-                <input class="cardFilter__input button" type="submit" name="ACTION" value="FILTRER" />
+                <input class="filter__input neon" type="submit" name="ACTION" value="FILTRER" />
             </form>
         </div>
 
@@ -128,7 +128,7 @@
             <p class="cardList__text">{{ $product->product_desc }}</p>
             <p class="cardList__price"><strong>{{ $product->product_price }} €</strong></p>
             <div class="cardList__box">
-                <button class="cardList__view button">
+                <button class="cardList__view neon">
                     <a href="{{ route('productDetail') }}?id={{ $product->id }}" class="cardList__link">Voir produit</a>
                 </button>
             </div>

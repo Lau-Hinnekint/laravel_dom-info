@@ -46,7 +46,7 @@ burgerClose.addEventListener('click', closeMenu);
 
 const filterOpen = document.querySelector('.openFilter');
 const filterClose = document.querySelector('.closeFilter');
-const filterMenu = document.querySelector('.cardFilter');
+const filterMenu = document.querySelector('.filter');
 
 /**
  * Hide the button open to let the the close button replace him and open the filter

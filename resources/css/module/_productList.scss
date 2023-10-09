@@ -1,14 +1,14 @@
 .productList {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
 
     @media #{$lrg} {
         flex-direction: row;
-        align-items:self-start;
-        margin: 0 10rem; 
+        align-items: self-start;
+        margin: 0 10rem;
     }
 }
 
@@ -16,7 +16,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     padding: 1rem 0;
-    
+
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -26,7 +26,7 @@
     }
 
     &__container {
-        display: flex; 
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
@@ -37,7 +37,7 @@
     &__img {
         width: 100%;
         margin-top: 2rem;
-        border-radius: 1rem; 
+        border-radius: 1rem;
     }
 
     &__name {
@@ -72,50 +72,35 @@
     }
 }
 
-.cardFilter {
+.filter {
     display: none;
-    width: 100%;
+    margin: 2rem 0;
 
     @media #{$lrg} {
         display: block;
-        width: 30%;
-    }
+        width: 40%;
 
-    &__container {
-        padding: 1rem;
-        margin: 0 1rem;
-    }
-
-    &__feature{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__chkbox {
-        width: 3rem;
-        height: 3rem;
-        padding: .5rem;
-
-        @media #{$lrg} {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
     }
 
     &__label {
-        width: 80%;
+        position: relative;
+        display: flex;
         font-size: 1.5rem;
-        margin-left: 1rem;
-        text-transform: uppercase;
-        @media #{$lrg} {
-            font-size: 1rem;;
+        padding-left: 2rem;
+
+        input {
+            position: absolute;
+            height: 1.5rem;
+            width: 1.5rem;
+            top: 0;
+            left:0;
         }
     }
 
     &__input {
-        display: flex;
-        margin:  2rem auto;
-        background-color: transparent;
+        margin: 2rem 0;
+        color: $white;
+        border: 0px;
+        background: transparent;
     }
 }
