@@ -68,52 +68,33 @@ class ProductController extends Controller
         } else {
             $products = Product::with('categories')->get();
 
-            $brands = 
-            $products->flatMap(function ($product) {
+            $brands = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.gene_brand');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.gene_brand')->toArray();
-
-            $procTypes = 
-            $products->flatMap(function ($product) {
+            $procTypes = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.proc_type');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.proc_type')->toArray();
-            $procFrequencies = 
-            $products->flatMap(function ($product) {
+            $procFrequencies = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.proc_frequency');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.proc_frequency')->toArray();
-            $memoSizes = 
-            $products->flatMap(function ($product) {
+            $memoSizes = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.memo_size');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.memo_size')->toArray();
-            $memoTypes = 
-            $products->flatMap(function ($product) {
+            $memoTypes = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.memo_type');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.memo_type')->toArray();
-            $storPrimaries = 
-            $products->flatMap(function ($product) {
+            $storPrimaries = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.stor_primary');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.stor_primary')->toArray();
-            $dispChipsets = 
-            $products->flatMap(function ($product) {
+            $dispChipsets = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.disp_chipset');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.disp_chipset')->toArray();
-            $dispMemories = 
-            $products->flatMap(function ($product) {
+            $dispMemories = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.disp_memory');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.disp_memory')->toArray();
-            $netwWireless = 
-            $products->flatMap(function ($product) {
+            $netwWireless = $products->flatMap(function ($product) {
                 return $product->categories->pluck('pivot.netw_wireless');
             })->unique()->toArray();
-            // $products->categories->unique('pivot.gene_brand')->pluck('pivot.netw_wireless')->toArray();
         }
 
 
@@ -154,7 +135,7 @@ class ProductController extends Controller
 
     public function filterProduct(Request $request)
     { 
-        
+
         $categoryID = $request->input('category_id');
 
         if (isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'FILTRER') {
@@ -217,6 +198,10 @@ class ProductController extends Controller
             $query->where('product_name', 'like', "%$searchValue%");
 
             $resultats = $query->get();
+        }
+
+        else if (empty($resultats)) {
+            echo"La recherhe n'a donné aucun résultat !";
         }
 
         return view('productFilter', compact('resultats', 'categoryID'));
