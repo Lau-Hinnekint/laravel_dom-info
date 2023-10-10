@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php $title = "Index" ?>
-
 <head>
 
     <meta charset="UTF-8" />
@@ -23,22 +21,21 @@
         <nav class="nav">
 
             <div class="nav__toggleMenu">
-                <div class="open toggleMenu__icon"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
-                <div class="close toggleMenu__icon is-hidden"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
+                <div class="toggleMenu__icon openBurger"><i class="fa-solid fa-bars fa-sm" style="color: #ffffff;"></i></div>
+                <div class="toggleMenu__icon is-hidden closeBurger"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
             </div>
 
-            <div class="logo nav__logo"></div>
-            
-            <ul class="nav__menu">
-                <li class="menu__list"><a href="{{ route('productList') }}?type=bureau" class="menu__link">Ordinateur de bureau</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=multimédia" class="menu__link">Ordinateur multimédia</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=gaming" class="menu__link">Ordinateur gaming</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=portable" class="menu__link">Ordinateur portable</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=périph" class="menu__link">Périphérique</a></li>
-                <li class="menu__list"><a href="{{ route('productList') }}?type=écran" class="menu__link">Ecran</a></li>
-            </ul>            
+            <div class="nav__logo logo"></div>
 
-            <div class="icon nav__cart"></div>
+            <ul class="nav__menu">
+
+                @foreach ($categories as $category)
+                <li class="menu__list"><a href="{{ route('productList') }}?cat_id={{ $category->id }}" class="menu__link">{{ $category->category_name }}</a></li>
+                @endforeach
+
+            </ul>
+
+            <div class="nav__cart icon"></div>
 
         </nav>
 
@@ -51,9 +48,10 @@
 
         <section class="searchbar">
 
-            <form method="get" class="searchbar__form">
-                <input class="searchbar__input" type="text" placeholder="Barre de recherche">
-                <button class="searchbar__submit" type="submit">
+            <form action="{{ route('productFilter') }}" method="post" class="searchbar__form">
+                @csrf
+                <input class="searchbar__input" type="text" placeholder="Barre de recherche" name="searchValue">
+                <button class="searchbar__submit" type="submit" name="ACTION" value="RECHERCHER">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>

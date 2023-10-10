@@ -1,0 +1,94 @@
+.productView {
+    padding: 1rem;
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+    gap: 2rem;
+
+    &__name {
+        text-align: center;
+        text-transform: uppercase;
+        margin:auto;
+    }
+
+    &__img {
+        border-radius: 1rem;
+        margin: auto;
+    }
+
+    &__text {
+        margin:auto;
+    }
+
+    &__price {
+        margin:auto;
+        font-size: 2rem;
+    }
+
+    &__add {
+        text-align: center;
+
+        @media #{$lrg} {
+            width: 25%;
+            margin: auto;
+        }
+    }
+
+    &__counter {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        @media #{$lrg} {
+            width: 25%;
+            margin: auto;
+        }
+    }
+
+    &__count {
+        font-size: 2rem;
+    }
+
+    &__add {
+        cursor: pointer;
+    }
+
+    &__box {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+}
+
+.increment,
+.decrement {
+    cursor: pointer;
+}
+
+.cardTable {
+
+    &__container {
+        overflow: hidden;
+        margin: 5rem auto;
+        padding: .5rem;
+        overflow-y: scroll;
+    }
+
+    &__title {
+        font-weight: 700;
+        color: $secondary;
+    }
+
+    &__feature {
+        width: 30%;
+    }
+
+    &__value {
+        width: 70%;
+    }
+}

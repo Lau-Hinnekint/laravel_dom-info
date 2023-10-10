@@ -2,6 +2,8 @@
 
 @section ('body')
 
-<p class="text"> HELLO WORLD ! </p>
+<?php $title= "Dom'Info - Accueil"; ?>
+
+<p class="text"> HELLO WORLD !! </p>
 
 @endSection

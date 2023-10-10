@@ -1,45 +1,106 @@
 .productList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    @media #{$lrg} {
+        flex-direction: row;
+        align-items: self-start;
+        margin: 0 10rem;
+    }
+}
+
+.cardList {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    padding: 5rem;
+    padding: 1rem 0;
 
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
     }
 
     @media #{$lrg} {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
-}
-
-.cardList {
 
     &__container {
-        display: flex; 
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
-        gap: 1rem;
-
-        border: 2px solid $primary;
-        border-radius: 1rem; 
+        margin: 1.5rem;
+        gap: 2rem;
     }
 
     &__img {
         width: 100%;
-
-        border-radius: 1rem; 
+        margin-top: 2rem;
+        border-radius: 1rem;
     }
 
     &__name {
         text-align: center;
+        text-transform: uppercase;
     }
 
-    &__box {
+    &__price {
+        font-size: 2rem;
+    }
+
+    &__view {
+        margin-bottom: 2rem;
+    }
+}
+
+.openFilter {
+    background-color: $white;
+    border-radius: 2rem;
+
+    @media #{$lrg} {
+        display: none;
+    }
+}
+
+.closeFilter {
+    background-color: $white;
+    border-radius: 2rem;
+
+    @media #{$lrg} {
+        display: none;
+    }
+}
+
+.filter {
+    display: none;
+    margin: 2rem 0;
+
+    @media #{$lrg} {
+        display: block;
+        width: 40%;
+
+    }
+
+    &__label {
+        position: relative;
         display: flex;
-        align-items: center;
-        gap: 2rem;
+        font-size: 1.5rem;
+        padding-left: 2rem;
+
+        input {
+            position: absolute;
+            height: 1.5rem;
+            width: 1.5rem;
+            top: 0;
+            left:0;
+        }
+    }
+
+    &__input {
+        margin: 2rem 0;
+        color: $white;
+        border: 0px;
+        background: transparent;
     }
 }
