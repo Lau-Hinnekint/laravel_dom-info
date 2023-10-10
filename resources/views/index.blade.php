@@ -4,6 +4,6 @@
 
 <?php $title= "Dom'Info - Accueil"; ?>
 
-<p class="text"> HELLO WORLD ! </p>
+<p class="text"> HELLO WORLD !! </p>
 
 @endSection
