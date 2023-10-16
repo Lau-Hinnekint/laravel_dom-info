@@ -36,7 +36,15 @@ return new class extends Migration
             $table->string ('netw_wirelessNorm');            
             $table->string ('netw_norm');            
             $table->string ('conn_front');            
-            $table->string ('conn_back');            
+            $table->string ('conn_back'); 
+            $table->string ('peri_type');
+            $table->string ('peri_lang');
+            $table->string ('peri_connector');
+            $table->string ('scrn_type');
+            $table->string ('scrn_size');
+            $table->string ('scrn_resolution');
+            $table->string ('scrn_response');
+            $table->string ('scrn_contrast');
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('product_id')->references('id')->on('products');

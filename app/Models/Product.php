@@ -18,7 +18,8 @@ class Product extends Model
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany(Order::class)
-            ->withPivot('total_quantity', 'total_price');
+            ->withPivot('total_quantity',
+            'total_price');
     }
 
 
@@ -50,7 +51,15 @@ class Product extends Model
                 'netw_wirelessNorm',
                 'netw_norm',
                 'conn_front',
-                'conn_back'
+                'conn_back',
+                'peri_type',
+                'peri_lang',
+                'peri_connector',
+                'scrn_type',
+                'scrn_size',
+                'scrn_resolution',
+                'scrn_response',
+                'scrn_contrast'
             );
     }
 }

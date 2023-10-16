@@ -7,6 +7,7 @@
 <section class="productFilter">
 
     <article class="cardFiltered">
+
         @foreach ($resultats as $resultat)
         <div class="cardList__container neon">
             <img src="{{ $resultat->product_img }}" alt="" class="card__img" />
@@ -20,6 +21,7 @@
             </div>
         </div>
         @endforeach
+        
     </article>
 
 </section>
