@@ -284,4 +284,22 @@ class ProductController extends Controller
 
         return view('productFilter', compact('resultats', 'categoryID'));
     }
+
+
+    public function  edit (Request $request) {
+
+        
+        $data = 'CECI EST UN TEST';
+
+        
+        return view('admin/adminPanel', compact('data'));
+    }
+
+    // public function  update (Request $request) {
+    //     return view('adminUpdate');
+    // }
+
+    // public function  destroy (Request $request) {
+    //     return view('adminDestroy');
+    // }
 }
