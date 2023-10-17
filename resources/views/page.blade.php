@@ -103,26 +103,28 @@
     <footer class="l-footer">
 
         <ul class="footer">
+            <li class="footer__list"><a href="{{ route('profile.edit') }}" class="footer__lnk">Mon compte</a></li>
+
             <li class="footer__list">
-                <p class='footer__text'>Connecté en tant que : ***</p>
-                <?php
-                // if (isset($_SESSION['email'])) {
-                //     print "<p class='footer_box-text'>Connecté en tant que : " . $_SESSION['email'] . "</p>";
-                // } else {
-                //     print "<p class='footer_box-text'>Vous n'êtes pas connecté. </p>";
-                // }
-                ?>
+                @if (Auth::check())
+                    <p class='footer__text'>Connecté en tant que : <strong>{{ Auth::user()->name }}</strong></p>
+                @else
+                    <p class='footer__text'>Vous n'êtes pas connecté. </p>
+                @endif
             </li>
-            <li class="footer__list"><a href="#" class="footer__lnk">Espace client</a></li>
+            
             <li class="footer__list">
-                <a href='#' class='footer__link'>Se déconnecter</a>
-                <?php
-                // if (isset($_SESSION['email'])) {
-                //     print "<a href='logout.php' class='footer_box-lnk'>Se déconnecter</a>";
-                // } else {
-                //     print "<a href='login.php' class='footer_box-lnk'>Se connecter</a>";
-                // }
-                ?>
+                @if (Auth::check())
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        {{ __('Se déconnecter') }}
+                    </x-dropdown-link>
+                </form>
+                @else
+                <a href="{{ route('login') }}" class="footer__lnk">Se connecter</a>
+                @endif
             </li>
 
         </ul>
