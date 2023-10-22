@@ -11,7 +11,9 @@
     border-bottom: solid 2px #37f713;
     box-shadow: 0 4px 8px #37f713;  
 
-    background-color: $dark-trans;
+    background-color: $dark;
+
+    z-index: 1;
 
     &__toggleMenu {
         display: flex;

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductController extends Controller
 {
@@ -13,25 +14,28 @@ class ProductController extends Controller
     public function  listProduct(Request $request)
     {
 
+        $allProducts = Product::all();
         $categoryID = $request->input('cat_id');
         $category = Category::find($categoryID);
-
-        $products = $category
-            ? $category->products()->get()
-            : Product::with('categories')->get();
+        
+        if ($categoryID) {
+            $products = $category->products()->paginate(6);
+        } else {
+            $products = Product::paginate(6);
+        }
 
         $properties = ['gene_brand', 'proc_type', 'proc_frequency', 'memo_size', 'memo_type', 'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless', 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size', 'scrn_resolution', 'scrn_response', 'scrn_contrast'];
         $result = [];
 
         foreach ($properties as $property) {
-            $values = $products->flatMap(function ($product) use ($property) {
+            $values = $allProducts->flatMap(function ($product) use ($property) {
                 return $product->categories->pluck("pivot.$property");
             })
-            ->unique()
-            ->filter(function ($value) {
-                return !is_null($value) && $value !== '';
-            })
-            ->toArray();
+                ->unique()
+                ->filter(function ($value) {
+                    return !is_null($value) && $value !== '';
+                })
+                ->toArray();
 
             $result[$property] = $values;
         }
@@ -125,6 +129,7 @@ class ProductController extends Controller
             'categoryID' => $categoryID,
             'products' => $products,
             'result' => $result
+
             // 'brands' => $brands,
             // 'procTypes' => $procTypes,
             // 'procFrequencies' => $procFrequencies,
@@ -171,16 +176,16 @@ class ProductController extends Controller
                 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size',
                 'scrn_resolution', 'scrn_response', 'scrn_contrast'
             ];
-           
+
 
             foreach ($filters as $filter) {
                 $inputValue = $request->input($filter);
-            
+
                 if (!empty($inputValue) && is_array($inputValue)) {
                     $query->whereHas('categories', function ($q) use ($filter, $inputValue) {
                         $q->whereIn($filter, $inputValue);
                     });
-                } 
+                }
             }
 
             // if (!empty($request->input('brand')) && is_array($request->input('brand'))) {
@@ -270,7 +275,6 @@ class ProductController extends Controller
             // }
 
             $resultats = $query->get();
-
         } else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {
             $query = Product::query();
             $searchValue = $request->input('searchValue');
@@ -286,12 +290,13 @@ class ProductController extends Controller
     }
 
 
-    public function  edit (Request $request) {
+    public function  edit(Request $request)
+    {
 
-        
+
         $data = 'CECI EST UN TEST';
 
-        
+
         return view('admin/adminPanel', compact('data'));
     }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -10,6 +10,7 @@
 
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
     @vite(['resources/css/style.scss', 'resources/js/app.js'])
 
 </head>
@@ -25,7 +26,7 @@
                 <div class="toggleMenu__icon is-hidden closeBurger"><i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i></div>
             </div>
 
-            <div class="nav__logo logo"></div>
+            <a href=" {{ route('productList') }}"> <div class="nav__logo logo"></div></a>
 
             <ul class="nav__menu">
 
