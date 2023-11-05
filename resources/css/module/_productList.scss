@@ -1,5 +1,5 @@
 .productList {
-    position: relative;
+    // position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,33 +14,24 @@
 }
 
 .pagination {
-    position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: row;
-    justify-self: center;
+    padding: 1rem;
 
     @media #{$med} {
-        top: 5%;
     }
 
     @media #{$lrg} {
-        top: 2%;
     }
 
     &__container {
-        li {
-            width: 100%;
-            margin:.5rem auto;
-        }
+        margin: auto;
 
         a,
         span {
             margin: .25rem;
             padding: 5px 12px 5px 12px;
-            border-style: ridge;
+            border-style: solid;
             border-radius: 40px;
             border: 0;
             box-shadow:
@@ -64,7 +55,8 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     padding: 1rem 0;
-    padding-top: 4rem;
+    padding-top: 1rem;
+    margin: 1rem;
 
     @media #{$med} {
         grid-template-columns: repeat(2, 1fr);
@@ -123,12 +115,21 @@
 
 .filter {
     display: none;
-    margin: 4rem 0;
+    margin:auto;
 
     @media #{$lrg} {
         display: block;
         width: 40%;
+        margin-top: 6rem;
+    }
 
+    &__form {
+        margin: auto;
+        text-align: center;
+
+        h6{
+            text-align: left;
+        }
     }
 
     &__label {
@@ -147,10 +148,10 @@
     }
 
     &__input {
-        margin: 2rem 0;
         color: $white;
         border: 0px;
         background: transparent;
     }
+
 }
 

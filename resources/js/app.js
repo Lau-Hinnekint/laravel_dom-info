@@ -101,7 +101,7 @@ const menuItems = document.querySelectorAll('.nav__menu li')
  * @return void
  */
 function bgMouseOver() {
-    this.classList.add('neon');
+    this.classList.add('secondaryBg');
 }
 
 /**
@@ -110,13 +110,15 @@ function bgMouseOver() {
  * @return void
  */
 function bgMouseOut() {
-    this.classList.remove('neon');
+    this.classList.remove('secondaryBg');
 }
+
 
 menuItems.forEach(function (item) {
     item.addEventListener('mouseover', bgMouseOver);
     item.addEventListener('mouseout', bgMouseOut);
 });
+
 
 
 
@@ -128,13 +130,12 @@ const decrementButton = document.querySelector(".decrement");
 const incrementButton = document.querySelector(".increment");
 const counterDisplay = document.querySelector(".counter");
 
-console.log(counterDisplay);
+// console.log(counterDisplay);
 
 var count = 0;
 
 function updateCounter(counter, newValue) {
-    counter.innerHTML = newValue;
-    console.log(newValue)
+    counter.innerHTML = newValue
 }
 
 function increment(button, counter) {
@@ -147,7 +148,7 @@ function increment(button, counter) {
 
 function decrement(button, counter) {
     button.addEventListener("click", () => {
-        if ( count > 0) {
+        if (count > 0) {
             count--;
             updateCounter(counter, count)
         }

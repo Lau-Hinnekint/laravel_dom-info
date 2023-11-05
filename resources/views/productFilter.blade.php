@@ -2,9 +2,18 @@
 
 @section ('body')
 
-<?php $title= "Dom'Info - Résultat"; ?>
+<?php $title = "Dom'Info - Résultat"; ?>
 
 <section class="productFilter">
+    <?php
+    // var_dump($resultats);
+    ?>
+
+    <!-- <div class="pagination">
+        <ul class="pagination__container">
+            $resultats->links("pagination::default")
+        </ul>
+    </div> -->
 
     <article class="cardFiltered">
 
@@ -21,7 +30,7 @@
             </div>
         </div>
         @endforeach
-        
+
     </article>
 
 </section>

@@ -182,37 +182,39 @@
 
     </article>
 
-
-
-    <article class="cardList">
-
+    <div class="productList-container">
+        
         <div class="pagination">
             <ul class="pagination__container">
                 @if ($categoryID)
                 {{$products->appends(['cat_id' => $categoryID])->links("pagination::default")}}
-                @else 
+                
+                @else
                 {{$products->onEachSide(0)->links("pagination::default")}}
                 @endif
             </ul>
         </div>
 
-        @foreach ($products as $product)
+        <article class="cardList">
 
-        <div class="cardList__container neon">
-            <img src="{{ $product->product_img }}" alt="" class="cardList__img" />
-            <h4 class="cardList__name">{{ $product->product_name }}</h4>
-            <p class="cardList__text">{{ $product->product_desc }}</p>
-            <p class="cardList__price"><strong>{{ $product->product_price }} €</strong></p>
-            <div class="cardList__box">
-                <button class="cardList__view neon">
-                    <a href="{{ route('productDetail') }}?id={{ $product->id }}" class="cardList__link">Voir produit</a>
-                </button>
+            @foreach ($products as $product)
+
+            <div class="cardList__container neon">
+                <img src="{{ $product->product_img }}" alt="" class="cardList__img" />
+                <h4 class="cardList__name">{{ $product->product_name }}</h4>
+                <p class="cardList__text">{{ $product->product_desc }}</p>
+                <p class="cardList__price"><strong>{{ $product->product_price }} €</strong></p>
+                <div class="cardList__box">
+                    <button class="cardList__view neon">
+                        <a href="{{ route('productDetail') }}?id={{ $product->id }}" class="cardList__link">Voir produit</a>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        @endforeach
+            @endforeach
 
-    </article>
+        </article>
+    </div>
 
 </section>
 

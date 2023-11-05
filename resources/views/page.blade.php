@@ -124,7 +124,8 @@
                     </x-dropdown-link>
                 </form>
                 @else
-                <a href="{{ route('login') }}" class="footer__lnk">Se connecter</a>
+                <a href="{{ route('login') }}" class="footer__lnk">Se connecter</a> / 
+                <a href="{{ route('register') }}" class="footer__lnk">S'enregistrer</a>
                 @endif
             </li>
 

@@ -14,18 +14,23 @@ class ProductController extends Controller
     public function  listProduct(Request $request)
     {
 
+        // PRODUCT LIST //
+
         $allProducts = Product::all();
         $categoryID = $request->input('cat_id');
         $category = Category::find($categoryID);
-        
+
         if ($categoryID) {
             $products = $category->products()->paginate(6);
         } else {
-            $products = Product::paginate(6);
+            $products = Product::paginate(9);
         }
 
         $properties = ['gene_brand', 'proc_type', 'proc_frequency', 'memo_size', 'memo_type', 'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless', 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size', 'scrn_resolution', 'scrn_response', 'scrn_contrast'];
         $result = [];
+
+
+        // FILTER MENU //
 
         foreach ($properties as $property) {
             $values = $allProducts->flatMap(function ($product) use ($property) {
@@ -43,6 +48,7 @@ class ProductController extends Controller
         // var_dump($result); exit;
 
 
+        // ========== QUERY DB ==========
 
         // if (isset($category)) {
         //     $products = $category->products()->get();
@@ -95,6 +101,10 @@ class ProductController extends Controller
         // } else {
 
         //     return $products = Product::with('categories')->get();
+        // }
+        // ==============================
+
+        // ========== ELOQUENT ==========
 
         // $brands = $products->flatMap(function ($product) {
         //     return $product->categories->pluck('pivot.gene_brand');
@@ -124,6 +134,7 @@ class ProductController extends Controller
         //     return $product->categories->pluck('pivot.netw_wireless');
         // })->unique()->toArray();
         // }
+        // ==============================
 
         return view('productList', [
             'categoryID' => $categoryID,
@@ -274,7 +285,7 @@ class ProductController extends Controller
             //     });
             // }
 
-            $resultats = $query->get();
+            $resultats = $query->paginate(6);
         } else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {
             $query = Product::query();
             $searchValue = $request->input('searchValue');
@@ -282,7 +293,7 @@ class ProductController extends Controller
             $query->where('product_name', 'like', "%$searchValue%");
 
             $resultats = $query->get();
-        } else if (empty($resultats)) {
+        } else if (!isset($resultats)) {
             echo "La recherhe n'a donné aucun résultat !";
         }
 
