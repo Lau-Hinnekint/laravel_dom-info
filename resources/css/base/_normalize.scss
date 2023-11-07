@@ -170,6 +170,27 @@ input {
 }
 
 /**
+    * Hide the increment and decrement arrow.
+    */
+
+input[type=number] {
+	/* Firefox */
+	-moz-appearance: textfield;
+ 
+	/* Chrome */
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin:0;
+	}
+ 
+	/* Opéra*/
+	&::-o-inner-spin-button {
+		-o-appearance: none;
+		margin: 0; 
+	}
+}
+
+/**
     * Remove the inheritance of text transform in Edge, Firefox, and IE.
     * Remove the inheritance of text transform in Edge and Firefox.
     */

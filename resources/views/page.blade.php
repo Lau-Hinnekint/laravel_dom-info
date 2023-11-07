@@ -36,7 +36,7 @@
 
             </ul>
 
-            <div class="nav__cart icon"></div>
+            <a href="{{ route('cart.show') }}" class="nav__cart icon"></a>
 
         </nav>
 

@@ -9,11 +9,11 @@
     // var_dump($resultats);
     ?>
 
-    <!-- <div class="pagination">
+    <div class="pagination">
         <ul class="pagination__container">
-            $resultats->links("pagination::default")
+            {{$resultats->links("pagination::default")}}
         </ul>
-    </div> -->
+    </div>
 
     <article class="cardFiltered">
 

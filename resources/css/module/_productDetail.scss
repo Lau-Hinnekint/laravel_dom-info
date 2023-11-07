@@ -11,7 +11,7 @@
     &__name {
         text-align: center;
         text-transform: uppercase;
-        margin:auto;
+        margin: auto;
     }
 
     &__img {
@@ -20,11 +20,11 @@
     }
 
     &__text {
-        margin:auto;
+        margin: auto;
     }
 
     &__price {
-        margin:auto;
+        margin: auto;
         font-size: 2rem;
     }
 
@@ -38,32 +38,55 @@
     }
 
     &__counter {
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
+        display: flex;
+        flex-direction: column ;
+        justify-content: center;
         gap: 2rem;
 
-        @media #{$lrg} {
-            width: 25%;
-            margin: auto;
-        }
     }
 
     &__count {
+        text-align: center;
+        color: $black;
         font-size: 2rem;
+        width: 5rem;
     }
 
     &__add {
+        margin: auto;
+        width: 75%;
         cursor: pointer;
-    }
 
-    &__box {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        @media #{$med} {
+            width: 50%;
+        }
+
+        @media #{$lrg} {
+            width: 25%;
+        }
     }
 
 }
+
+.count-container {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin: auto;
+
+    @media #{$med} {
+        width: 50%;
+    }
+
+    @media #{$lrg} {
+        width: 25%;
+        margin: auto;
+    }
+}
+
+
 
 .increment,
 .decrement {

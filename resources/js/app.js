@@ -135,7 +135,7 @@ const counterDisplay = document.querySelector(".counter");
 var count = 0;
 
 function updateCounter(counter, newValue) {
-    counter.innerHTML = newValue
+    counter.value  = newValue
 }
 
 function increment(button, counter) {
