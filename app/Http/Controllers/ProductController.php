@@ -16,161 +16,100 @@ class ProductController extends Controller
 
         // PRODUCT LIST //
 
-        $allProducts = Product::all();
-        $categoryID = $request->input('cat_id');
-        $category = Category::find($categoryID);
+        // $allProducts = Product::all();
+        $categoryID = $request->input('cat_id');                                    // Retrieve the category ID into the request using the GET method
+        $category = Category::find($categoryID);                                    // Use the 'find' method of Category model to look for an primary key matching with the value categoryID
 
-        if ($categoryID) {
-            $products = $category->products()->paginate(6);
-        } else {
-            $products = Product::paginate(9);
+        if ($categoryID) {                                                          // If $categoryID is set 
+            $products = $category->products()->paginate(6);                         // Create a $products variable retrieving all the product matching with the $category variable and
+                                                                                    // paginate them as 6 elements per page
+            //SQL REQUEST
+            // SELECT 
+            // `products`.*, 
+            // `category_product`.`category_id` as `pivot_category_id`, 
+            // `category_product`.`product_id` as `pivot_product_id` 
+            // FROM 
+            //     `products` 
+            // INNER JOIN 
+            //     `category_product` ON `products`.`id` = `category_product`.`product_id` 
+            // WHERE 
+            //     `category_product`.`category_id` = ? 
+            // LIMIT 6 OFFSET 0;
+
+        } else {                                                                    // If $categoryID is not set
+            $products = Product::paginate(9);                                       // Then we retrieve all products and paginate them as 9 elements per page
+
+            // SQL REQUEST 
+            // SELECT * FROM `products` LIMIT 9 OFFSET 0;
         }
-
-        $properties = ['gene_brand', 'proc_type', 'proc_frequency', 'memo_size', 'memo_type', 'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless', 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size', 'scrn_resolution', 'scrn_response', 'scrn_contrast'];
-        $result = [];
 
 
         // FILTER MENU //
 
+        $properties = ['gene_brand', 'proc_type', 'proc_frequency', 'memo_size', 'memo_type', 'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless', 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size', 'scrn_resolution', 'scrn_response', 'scrn_contrast'];
+        $result = [];
+
         foreach ($properties as $property) {
-            $values = $allProducts->flatMap(function ($product) use ($property) {
+            $values = $products->flatMap(function ($product) use ($property) {      // flatMap iterates through each product and retrieves the associated value with its key
                 return $product->categories->pluck("pivot.$property");
             })
-                ->unique()
-                ->filter(function ($value) {
+                ->unique()                                                          // remove duplicates data
+                ->filter(function ($value) {                                        // remove null or empty values
                     return !is_null($value) && $value !== '';
                 })
-                ->toArray();
+                ->toArray();                                                        // converts the result to an array
 
             $result[$property] = $values;
         }
-
-        // var_dump($result); exit;
-
-
-        // ========== QUERY DB ==========
-
-        // if (isset($category)) {
-        //     $products = $category->products()->get();
-
-        // $brands = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('gene_brand');
-
-        // $procTypes = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('proc_type');
-
-        // $procFrequencies = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('proc_frequency');
-
-        // $memoSizes = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('memo_size');
-
-        // $memoTypes = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('memo_type');
-
-        // $storPrimaries = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('stor_primary');
-
-        // $dispChipsets = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('disp_chipset');
-
-        // $dispMemories = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('disp_memory');
-
-        // $netwWireless = DB::table('category_product')
-        //     ->where('category_id', $categoryID)
-        //     ->distinct()
-        //     ->pluck('netw_wireless');
-
-        // } else {
-
-        //     return $products = Product::with('categories')->get();
-        // }
-        // ==============================
-
-        // ========== ELOQUENT ==========
-
-        // $brands = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.gene_brand');
-        // })->unique()->toArray();
-        // $procTypes = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.proc_type');
-        // })->unique()->toArray();
-        // $procFrequencies = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.proc_frequency');
-        // })->unique()->toArray();
-        // $memoSizes = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.memo_size');
-        // })->unique()->toArray();
-        // $memoTypes = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.memo_type');
-        // })->unique()->toArray();
-        // $storPrimaries = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.stor_primary');
-        // })->unique()->toArray();
-        // $dispChipsets = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.disp_chipset');
-        // })->unique()->toArray();
-        // $dispMemories = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.disp_memory');
-        // })->unique()->toArray();
-        // $netwWireless = $products->flatMap(function ($product) {
-        //     return $product->categories->pluck('pivot.netw_wireless');
-        // })->unique()->toArray();
-        // }
-        // ==============================
 
         return view('productList', [
             'categoryID' => $categoryID,
             'products' => $products,
             'result' => $result
-
-            // 'brands' => $brands,
-            // 'procTypes' => $procTypes,
-            // 'procFrequencies' => $procFrequencies,
-            // 'memoSizes' => $memoSizes,
-            // 'memoTypes' => $memoTypes,
-            // 'storPrimaries' => $storPrimaries,
-            // 'dispChipsets' => $dispChipsets,
-            // 'dispMemories' => $dispMemories,
-            // 'netwWireless' => $netwWireless
         ]);
     }
 
 
-
-
     public function  detailProduct(Request $request)
     {
-        $productID = $request->input('id');
-        $product = Product::with('categories')->find($productID);
 
-        $categories = $product->categories;
+        // DB::listen(function ($query) {
+        //     dump($query->sql);
+        //     dump($query->bindings);
+        //     dump($query->time);
+        // });
 
-        foreach ($categories as $category) {
-            $pivotData[] = $category->pivot;
-        }
+        // $productID = $request->input('id');
+        // $product = Product::with('categories')->find($productID);
+
+        // $categories = $product->categories;
+
+        // foreach ($categories as $category) {
+        //     $pivotData[] = $category->pivot;
+        // }
+
+        $productID = $request->input('id');                         // Retrieve the product with his ID given by the HTTP request using the GET method
+        // REQUETE SQL //
+        // SELECT * FROM `products` WHERE `products`.`id` = ? LIMIT 1;
+
+        $product = Product::with('categories')->find($productID);   // Precharging the data with the "categories" junction depending of the product ID using Eloquent
+        // REQUETE SQL //
+        // SELECT 
+        // `categories`.*, 
+        // `category_product`.`product_id` as `pivot_product_id`, 
+        // `category_product`.`category_id` as `pivot_category_id`, 
+        // [...]
+        // `category_product`.`scrn_response` as `pivot_scrn_response`, 
+        // `category_product`.`scrn_contrast` as `pivot_scrn_contrast` 
+        // FROM `categories` 
+        // INNER JOIN `category_product` on `categories`.`id` = `category_product`.`category_id` 
+        // WHERE `category_product`.`product_id` in (2)
+
+        $pivotData = $product->categories->pluck('pivot');          // We retrieve the preloaded pivot data and use pluck which will perform a foreach of each pivot relationship of the product
+                                                                    // to stored them in the pivotData variable as a collection (better data handling via Blade)
 
         return view('productDetail', compact('product', 'pivotData'));
     }
-
-
 
 
     public function  filterProduct(Request $request)
@@ -178,124 +117,43 @@ class ProductController extends Controller
         // var_dump($_REQUEST);exit;
         $categoryID = $request->input('category_id');
 
-        if (isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'FILTRER') {
-            $query = Product::query();
+        if (isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'FILTRER') {                  // Verify if the ACTION in the request is set as FILTRER
+            $query = Product::query();                                                          // Then an Eloquent request is created from de product model
 
-            $filters = [
+            $filters = [        
                 'gene_brand', 'proc_type', 'proc_frequency', 'memo_size', 'memo_type',
-                'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless',
+                'stor_primary', 'disp_chipset', 'disp_memory', 'netw_wireless',                 // A list of filters is defined
                 'peri_type', 'peri_lang', 'peri_connector', 'scrn_type', 'scrn_size',
                 'scrn_resolution', 'scrn_response', 'scrn_contrast'
             ];
 
 
             foreach ($filters as $filter) {
-                $inputValue = $request->input($filter);
+                $inputValue = $request->input($filter);                                         // For each filter, we retrieve the value associated  with the specific key, the filter name 
 
-                if (!empty($inputValue) && is_array($inputValue)) {
-                    $query->whereHas('categories', function ($q) use ($filter, $inputValue) {
-                        $q->whereIn($filter, $inputValue);
-                    });
+                if (!empty($inputValue) && is_array($inputValue)) {                             // If the value is not empty and is an array
+                    $query->whereHas('categories', function ($q) use ($filter, $inputValue) {   // A subquery is used with 'whereHas', this allows products to be filtered based on relationships in the pivot table
+                        $q->whereIn($filter, $inputValue);                                      // The callback function allows you to specify the conditions of the subquery using 'whereIn' 
+                    });                                                                         // filtering the result depending of the value of the filter
                 }
             }
 
-            // if (!empty($request->input('brand')) && is_array($request->input('brand'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('gene_brand', $request->input('brand'));
-            //     });
-            // }
-            // if (!empty($request->input('procType')) && is_array($request->input('procType'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('proc_Type', $request->input('procType'));
-            //     });
-            // }
-            // if (!empty($request->input('procFrequency')) && is_array($request->input('procFrequency'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('proc_Frequency', $request->input('procFrequency'));
-            //     });
-            // }
-            // if (!empty($request->input('memoSize')) && is_array($request->input('memoSize'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('memo_size', $request->input('memoSize'));
-            //     });
-            // }
-            // if (!empty($request->input('memoType')) && is_array($request->input('memoType'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('memo_Type', $request->input('memoType'));
-            //     });
-            // }
-            // if (!empty($request->input('storPrimary')) && is_array($request->input('storPrimary'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('stor_Primary', $request->input('storPrimary'));
-            //     });
-            // }
-            // if (!empty($request->input('dispChipset')) && is_array($request->input('dispChipset'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('disp_Chipset', $request->input('dispChipset'));
-            //     });
-            // }
-            // if (!empty($request->input('dispMemory')) && is_array($request->input('dispMemory'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('disp_Memory', $request->input('dispMemory'));
-            //     });
-            // }
-            // if (!empty($request->input('netwWire')) && is_array($request->input('netwWire'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('netw_wireless', $request->input('netwWire'));
-            //     });
-            // }
-            // if (!empty($request->input('periType')) && is_array($request->input('periType'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('peri_type', $request->input('periType'));
-            //     });
-            // }
-            // if (!empty($request->input('periLang')) && is_array($request->input('periLang'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('peri_lang', $request->input('periLang'));
-            //     });
-            // }
-            // if (!empty($request->input('periConnector')) && is_array($request->input('periConnector'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('peri_connector', $request->input('periConnector'));
-            //     });
-            // }
-            // if (!empty($request->input('scrnType')) && is_array($request->input('scrnType'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('scrn_type', $request->input('scrnType'));
-            //     });
-            // }
-            // if (!empty($request->input('scrnSize')) && is_array($request->input('scrnSize'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('scrn_size', $request->input('scrnSize'));
-            //     });
-            // }
-            // if (!empty($request->input('scrnResolution')) && is_array($request->input('scrnResolution'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('scrn_resolution', $request->input('scrnResolution'));
-            //     });
-            // }
-            // if (!empty($request->input('scrnResponse')) && is_array($request->input('scrnResponse'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('scrn_response', $request->input('scrnResponse'));
-            //     });
-            // }
-            // if (!empty($request->input('scrnContrast')) && is_array($request->input('scrnContrast'))) {
-            //     $query->whereHas('categories', function ($q) use ($request) {
-            //         $q->whereIn('scrn_contrast', $request->input('scrnContrast'));
-            //     });
-            // }
+            $resultats = $query->paginate(6);                                                   // Told to the request to paginate the result with 6 element per page
 
-            $resultats = $query->paginate(6);
-        } else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {
-            $query = Product::query();
-            $searchValue = $request->input('searchValue');
+        } else if ((isset($_REQUEST['ACTION']) && $_REQUEST['ACTION'] === 'RECHERCHER')) {      // Verify if the ACTION in the request is set as RECHERCHER
+            DB::listen(function ($query) {
+                dump($query->sql);
+                dump($query->bindings);
+                dump($query->time);
+            });
+            $query = Product::query();                                                          // Then an Eloquent request is created from de product model
+            $searchValue = $request->input('searchValue');                                      // Retrieve the searchValue and put it in a variable
 
-            $query->where('product_name', 'like', "%$searchValue%");
+            $query->where('product_name', 'like', "%$searchValue%");                            // Research every matching product name who include the searchValue
 
-            $resultats = $query->get();
-        } else if (!isset($resultats)) {
-            echo "La recherhe n'a donné aucun résultat !";
-        }
+            $resultats = $query->paginate(6);                                                   // Told to the request to paginate the result with 6 element per page
+
+        } 
 
         return view('productFilter', compact('resultats', 'categoryID'));
     }

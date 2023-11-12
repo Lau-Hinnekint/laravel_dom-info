@@ -16,7 +16,9 @@
     </div>
 
     <article class="cardFiltered">
-
+    @if(isset($resultats) && $resultats->isEmpty())
+    <p class="noResult">La recherche n'a donné aucun résultat !</p>
+    @else
         @foreach ($resultats as $resultat)
         <div class="cardList__container neon">
             <img src="{{ $resultat->product_img }}" alt="" class="card__img" />
@@ -30,7 +32,7 @@
             </div>
         </div>
         @endforeach
-
+    @endif
     </article>
 
 </section>
