@@ -7,7 +7,9 @@
 <section class="productView">
 
 
+
     <div class="card">
+        <!-- @dump($product) -->
 
         <article class="cardHeader">
 
@@ -23,7 +25,6 @@
                 @csrf
                 <div class="count-container">
                     <span class="decrement neon">-</span>
-                    <!-- <input type="text" class="cardHeader__count counter" name= "quantity" value="0" disabled> -->
                     <input type="number" class="cardHeader__count counter" name="quantity" value="0" inputmode="numeric">
                     <span class="increment neon">+</span>
                 </div>

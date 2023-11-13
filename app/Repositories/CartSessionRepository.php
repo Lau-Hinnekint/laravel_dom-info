@@ -6,37 +6,56 @@ use App\Models\Product;
 
 class CartSessionRepository implements CartInterfaceRepository  {
 
-    // Show the cart
+    /**
+	 * Show the cart
+	 *
+	 * @return void
+	 */
 	public function show () {
 		return view('cart.show');
 	}
 
-    // Add a product to the cart
+    /**
+	 * Add a product to the cart 
+	 *
+	 * @param Product $product
+	 * @param [type] $quantity
+	 * @return void
+	 */
 	public function add (Product $product, $quantity) {		
 		$cart = session()->get("cart");
 
-		// Les informations du produit à ajouter
-		$product_details = [
+		
+		$product_details = [ // Details of the product to add
             'id' => $product->id,
 			'name' => $product->product_name,
 			'price' => $product->product_price,
 			'quantity' => $quantity
 		];
 		
-		$cart[$product->id] = $product_details; // On ajoute ou on met à jour le produit au panier
-		session()->put("cart", $cart); // On enregistre le panier
+		$cart[$product->id] = $product_details; // Add or update the product in the cart 
+		session()->put("cart", $cart); // Saving the cart
 	}
 
-	// Remove a product from the cart
+	/**
+	 * Remove a product from the cart
+	 *
+	 * @param Product $product
+	 * @return void
+	 */
 	public function remove (Product $product) {
-		$cart = session()->get("cart"); // On récupère le panier en session
-		unset($cart[$product->id]); // On supprime le produit du tableau $cart
-		session()->put("cart", $cart); // On enregistre le panier
+		$cart = session()->get("cart"); // Retrieve the cart in session
+		unset($cart[$product->id]); // Delete the product from the cart using his ID 
+		session()->put("cart", $cart); // Saving the cart
 	}
 
-	// Empty the cart
+	/**
+	 * Delete the cart
+	 *
+	 * @return void
+	 */
 	public function empty () {
-		session()->forget("cart"); // On supprime le panier en session
+		session()->forget("cart"); // Delete the cart in session
 	}
 
 }

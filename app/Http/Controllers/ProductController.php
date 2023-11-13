@@ -79,15 +79,6 @@ class ProductController extends Controller
         //     dump($query->time);
         // });
 
-        // $productID = $request->input('id');
-        // $product = Product::with('categories')->find($productID);
-
-        // $categories = $product->categories;
-
-        // foreach ($categories as $category) {
-        //     $pivotData[] = $category->pivot;
-        // }
-
         $productID = $request->input('id');                         // Retrieve the product with his ID given by the HTTP request using the GET method
         // REQUETE SQL //
         // SELECT * FROM `products` WHERE `products`.`id` = ? LIMIT 1;
@@ -107,7 +98,9 @@ class ProductController extends Controller
 
         $pivotData = $product->categories->pluck('pivot');          // We retrieve the preloaded pivot data and use pluck which will perform a foreach of each pivot relationship of the product
                                                                     // to stored them in the pivotData variable as a collection (better data handling via Blade)
-
+        // foreach ($categories as $category) {
+        //     $pivotData[] = $category->pivot;
+        // }
         return view('productDetail', compact('product', 'pivotData'));
     }
 
