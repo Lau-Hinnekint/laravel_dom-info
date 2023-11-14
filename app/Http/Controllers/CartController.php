@@ -12,10 +12,16 @@ class CartController extends Controller
 {
     protected $cartRepository;
 
+    /**
+     * Constructor used to inject a dependance of 'CartInterfaceRepository' type into the object being construct
+     *
+     * @param CartInterfaceRepository $cartRepository
+     */
     public function __construct(CartInterfaceRepository $cartRepository)
     {
         $this->cartRepository = $cartRepository;
     }
+
 
     public function show()
     {

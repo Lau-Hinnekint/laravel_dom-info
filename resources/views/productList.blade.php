@@ -2,7 +2,7 @@
 
 @section ('body')
 
-<?php $title = "Dom'Info - Liste de produit"; ?>
+@php $title = "Dom'Info - Liste de produit"; @endphp
 
 <section class="productList">
 

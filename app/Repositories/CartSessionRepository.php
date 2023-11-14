@@ -34,7 +34,7 @@ class CartSessionRepository implements CartInterfaceRepository  {
 		];
 		
 		$cart[$product->id] = $product_details; // Add or update the product in the cart 
-		session()->put("cart", $cart); // Saving the cart
+		session()->put("cart", $cart); 			// Saving the cart
 	}
 
 	/**
@@ -45,8 +45,8 @@ class CartSessionRepository implements CartInterfaceRepository  {
 	 */
 	public function remove (Product $product) {
 		$cart = session()->get("cart"); // Retrieve the cart in session
-		unset($cart[$product->id]); // Delete the product from the cart using his ID 
-		session()->put("cart", $cart); // Saving the cart
+		unset($cart[$product->id]); 	// Delete the product from the cart using his ID 
+		session()->put("cart", $cart); 	// Saving the cart
 	}
 
 	/**

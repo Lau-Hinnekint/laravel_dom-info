@@ -2,7 +2,7 @@
 
 @section ('body')
 
-<?php $title = "Dom'Info - $product->product_name "; ?>
+@php $title = "Dom'Info - $product->product_name "; @endphp
 
 <section class="productView">
 

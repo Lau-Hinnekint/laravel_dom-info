@@ -161,7 +161,7 @@ function increment(button, counter) {
  */
 function decrement(button, counter) {
     button.addEventListener("click", () => {        // Listen if user click on the decrement button
-        if (count > 0) {                            // Verify if the value is not <= 0
+        if (count > 0) {                            // Verify if the value is >= 0
             count--;                                // Decrement by 1 the  actual value 
             updateCounter(counter, count)           // Update the value of actual display using the updateCounter function
         }
