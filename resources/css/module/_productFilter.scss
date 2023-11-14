@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
+    color:$white ;
 
     @media #{$lrg} {
         flex-direction: row;

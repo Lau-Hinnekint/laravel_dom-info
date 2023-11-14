@@ -2,7 +2,7 @@
 
 @section ('body')
 
-<?php $title= "Dom'Info - Accueil"; ?>
+@php $title= "Dom'Info - Accueil"; @endphp
 
 <p class="text"> HELLO WORLD !! </p>
 

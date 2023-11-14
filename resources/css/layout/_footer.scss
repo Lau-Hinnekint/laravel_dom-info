@@ -3,6 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    color: $white;
     
 }
 
@@ -16,16 +17,19 @@
     background-color : $dark-trans;
     backdrop-filter: blur(15px);
 
+   
+
     &__text {
         font-size: 1rem;
         color: $primary;
         background-color: transparent;
+         color: $white;
     }
 
     &__list {
         margin: 0 .5rem 0 .5rem;
         text-align: center;
-        background-color: transparent;
+        background-color: transparent; color: $white;
     }
 
     &__lnk {

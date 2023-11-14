@@ -1,12 +1,20 @@
 .productView {
     padding: 1rem;
+    background-color: $dark;
+}
+
+.card {
+    background-color: $dark;
 }
 
 .cardHeader {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: .5rem;
     gap: 2rem;
+    margin: auto;
+    color: $white;
 
     &__name {
         text-align: center;
@@ -21,6 +29,7 @@
 
     &__text {
         margin: auto;
+        text-align: center;
     }
 
     &__price {
@@ -30,51 +39,29 @@
 
     &__add {
         text-align: center;
-
-        @media #{$lrg} {
-            width: 25%;
-            margin: auto;
-        }
+        margin: 2rem auto;
+        width: 100%;
+        cursor: pointer;
     }
 
-    &__counter {
-        display: flex;
-        flex-direction: column ;
-        justify-content: center;
-        gap: 2rem;
-
-    }
 
     &__count {
         text-align: center;
         color: $black;
         font-size: 2rem;
-        width: 5rem;
+        width: 4rem;
+        margin: 0 1rem;
     }
-
-    &__add {
-        margin: auto;
-        width: 75%;
-        cursor: pointer;
-
-        @media #{$med} {
-            width: 50%;
-        }
-
-        @media #{$lrg} {
-            width: 25%;
-        }
-    }
-
 }
 
 .count-container {
-    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
     margin: auto;
+
+    background-color: $dark;
+    color: $white;
 
     @media #{$med} {
         width: 50%;
@@ -94,6 +81,8 @@
 }
 
 .cardTable {
+    background-color: $dark;
+    color: $white;
 
     &__container {
         overflow: hidden;

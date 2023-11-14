@@ -15,7 +15,7 @@
 
             <h4 class="cardHeader__name">{{ $product->product_name }}</h4>
 
-            <img src="{{ $product->product_img }}" alt="" class="cardHeader__img" />
+            <img src="{{ $product->product_img }}" alt="" class="cardHeader__img">
 
             <p class="cardHeader__text">{{ $product->product_desc }}</p>
 

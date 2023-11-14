@@ -22,16 +22,27 @@ class CartController extends Controller
         $this->cartRepository = $cartRepository;
     }
 
-
+    /**
+     * Show the cart
+     *
+     * @return void
+     */
     public function show()
     {
         return view('cart.show');
     }
 
+    /**
+     * Add a product into the cart
+     *
+     * @param Product $product
+     * @param Request $request
+     * @return void
+     */
     public function add(Product $product, Request $request)
     {
 
-        // Validation de la requête
+        // Validation of the request only if it is >=1
         $this->validate($request, [
             "quantity" => "numeric|min:1"
         ]);
@@ -39,25 +50,37 @@ class CartController extends Controller
         // Add/Update product to cart with quantity
         $this->cartRepository->add($product, $request->quantity);
 
-        return back()->withMessage("Produit ajouté au panier");
+        // Redirection to the cart
+        return redirect()->route("cart.show")->withMessage("Produit ajouté au panier");
     }
 
+    /**
+     * Remove a product from the cart 
+     *
+     * @param Product $product
+     * @return void
+     */
     public function remove(Product $product)
     {
 
-        // Suppression du produit du panier par son identifiant
+        // Remove a product form the cart with his ID 
         $this->cartRepository->remove($product);
 
-        // Redirection vers le panier
+        // Redirection to the cart
         return back()->withMessage("Produit retiré du panier");
     }
 
+    /**
+     * Empty the cart
+     *
+     * @return void
+     */
     public function empty () {
 
-    	// Suppression des informations du panier en session
+    	// Delete the cart data in session
     	$this->cartRepository->empty();
 
-    	// Redirection vers le panier
+    	// Redirection to the cart
     	return back()->withMessage("Panier vidé");
 
     }
